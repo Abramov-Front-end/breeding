@@ -93,11 +93,45 @@ cryoSwipers.forEach(e => {
     )
 })
 
+//Timers
+function Timer (el, timeStart, timeNow) {
+    this.el = el
+    this.timeStart = timeStart
+    this.timeNow = timeNow
+    this.interval = null
+}
+Timer.prototype.start = function (stopFunc) {
+    const total = 0.25
+    const timeFinished = this.timeStart.getTime() + total*60*1000
+
+    this.stopFunc = stopFunc
+    this.el.classList.add('show')
+
+    this.interval = setInterval(function(){
+        const timeLeft = timeFinished - new Date().getTime()
+
+        if ( timeLeft > 0 ) {
+            const minutes = Math.floor(timeLeft / (1000 * 60));
+            const seconds = Math.floor(timeLeft / 1000);
+            this.el.innerHTML = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+        } else {
+            this.el.innerHTML = '00:00'
+            this.stop(this.stopFunc)
+        }
+
+    }.bind(this), 1000)
+}
+Timer.prototype.stop = function(stopfunc) {
+    this.el.classList.remove('show')
+    clearInterval(this.interval)
+    stopfunc()
+}
+
 //CreoCamera
 
 const creoCamera = document.getElementById('creoCamera')
 
-function Cryogenic() {
+function Breeding() {
     this.cryogenicEl = document.querySelector('.cryogenic')
 
     this.sounds = {}
@@ -107,11 +141,18 @@ function Cryogenic() {
     this.sounds.robot.loop = true
     this.sounds.mutant1 = new Audio('audio/03_sound_mutant.mp3')
     this.sounds.mutant2 = new Audio('audio/04_sound_mutant.mp3')
+    this.sounds.complete = new Audio('audio/06_breeding_complete.mp3')
+    this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3')
 }
-Cryogenic.prototype.start = function() {
-    this.cryogenicEl.classList.add('started')
-    this.cryogenicEl.classList.add('step_1')
+
+Breeding.prototype.start = function() {
+    this.cryogenicEl.className = 'cryogenic started step_1'
     this.sounds.water.play()
+
+    const timerEl = creoCamera.querySelector('.nft-timer')
+    const timer = new Timer(timerEl, new Date(), new Date())
+
+    timer.start(this.finish.bind(this))
 
     setTimeout(function() {
         this.cryogenicEl.classList.add('embrion-start')
@@ -162,12 +203,23 @@ Cryogenic.prototype.start = function() {
         this.cryogenicEl.className = 'cryogenic in-progress'
     }.bind(this), 6300)
 }
-const cryogenic = new Cryogenic()
+
+Breeding.prototype.finish = function() {
+
+    this.cryogenicEl.className = 'cryogenic in-progress completed'
+    this.sounds.complete.play()
+    this.sounds.robot.pause()
+
+    setTimeout(function(){
+        this.cryogenicEl.classList.add('on')
+    }.bind(this), 100)
+
+    setTimeout(function(){
+        this.cryogenicEl.className = 'cryogenic completed on'
+    }.bind(this), 1100)
+}
+const breeding = new Breeding()
 
 creoCamera.addEventListener('click', function(e) {
-    if ( !creoCamera.classList.contains('not-active') ) {
-        cryogenic.start()
-        creoCamera.classList.add('not-active')
-    }
-
+    breeding.start()
 })
