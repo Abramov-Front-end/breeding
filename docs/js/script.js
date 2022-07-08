@@ -141,8 +141,8 @@ function Breeding() {
     this.sounds.robot.loop = true
     this.sounds.mutant1 = new Audio('audio/03_sound_mutant.mp3')
     this.sounds.mutant2 = new Audio('audio/04_sound_mutant.mp3')
-    this.sounds.complete = new Audio('audio/06_breeding_complete.mp3')
-    this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3')
+    this.sounds.complete = new Audio('audio/06_breeding_complete.mp3?v01')
+    this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3?v01')
 }
 
 Breeding.prototype.start = function() {

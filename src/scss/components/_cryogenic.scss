@@ -196,9 +196,8 @@
     }
   }
   &.started, &.in-progress {
-    .box {
-      opacity: 0;
-      pointer-events: none;
+    .potions-list {
+      display: none;
     }
     .start_screen {
       display: none;
@@ -218,6 +217,9 @@
         display: none;
       }
     }
+    .breeding-controls {
+      display: flex;
+    }
   }
 
   &.completed {
@@ -233,6 +235,7 @@
     .splash_complete {
       display: block;
     }
+
     &.on {
       .animate_complete {
         opacity: 1;
@@ -252,13 +255,60 @@
         display: block;
       }
     }
+    .plate {
+      display: none;
+    }
+    .potions-list {
+      display: none;
+    }
+    .breeding-controls {
+      display: flex;
+
+      .reveal-block {
+        overflow: visible;
+        width: 239px;
+        opacity: 1;
+      }
+    }
   }
 
-  .box {
+  .potions-list {
     width: 100%;
     border-radius: $border-radius-md;
   }
+  .breeding-controls {
+    display: none;
+    margin-top: -26px;
+    padding: 18px 0 36px;
+    height: 100px;
+    text-transform: uppercase;
 
+    .reveal-block {
+      display: flex;
+      width: 0;
+      align-items: center;
+      opacity: 0;
+      transition: all 1s;
+      overflow: hidden;
+
+      .reveal-now {
+        padding: 0 32px;
+      }
+
+      span {
+        display: block;
+        margin: 0 18px;
+        font-size: $font-size-md;
+        font-weight: $font-weight_light;
+        color: $white;
+      }
+    }
+
+    .breeding-new {
+      min-width: 284px;
+      position: relative;
+    }
+  }
   .plate {
     display: flex;
     justify-content: center;
