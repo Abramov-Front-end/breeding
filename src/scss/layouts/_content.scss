@@ -1,0 +1,17 @@
+.content {
+  &__inner {
+    flex-direction: column;
+
+    .title {
+      margin-bottom: 27px;
+      color: $white;
+      text-align: center;
+      text-transform: uppercase;
+
+      span {
+        display: block;
+        color: $red;
+      }
+    }
+  }
+}

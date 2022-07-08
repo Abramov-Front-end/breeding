@@ -1,0 +1,230 @@
+.cryogenic {
+  flex: 1 1 auto;
+  display: flex;
+  min-width: 268px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 50px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+
+  &-wrapper {
+    display: flex;
+  }
+
+  &__chosen {
+    flex: 0 0 385px;
+    padding-top: 10px;
+    width: 385px;
+
+    &__title {
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 6px 6px rgba($black, 0.26);
+      letter-spacing: 0.06em;
+      font-size: $font-size-bg;
+      font-weight: $font-weight_black;
+      color: $white;
+    }
+  }
+  .creo-camera {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 26px;
+    width: 268px;
+    height: 540px;
+    max-width: 100%;
+    position: relative;
+    cursor: pointer;
+
+    object {
+      pointer-events: none;
+    }
+
+    &__img {
+      display: none;
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &.start_screen {
+        display: block;
+      }
+    }
+
+    .robot-hand {
+      width: 250px;
+      position: absolute;
+      top: 36px;
+      z-index: 5;
+      opacity: 0;
+      pointer-events: none;
+
+      object {
+        max-width: 100%;
+      }
+      &_left {
+        right: -102px;
+        width: 258px;
+      }
+      &_right {
+        left: -102px;
+      }
+    }
+
+    .embrion {
+      display: none;
+      width: 146px;
+      height: auto;
+      transform-origin: 50% 50%;
+      transform: translateY(140px) rotate(-45deg);
+      opacity: 0;
+      transition: all 4s;
+      position: absolute;
+      bottom: 156px;
+      z-index: 3;
+    }
+    .splash {
+      display: none;
+      pointer-events: none;
+      position: absolute;
+      z-index: 4;
+
+      &_1 {
+        transform: translateX(-30px);
+        bottom: 30px;
+      }
+
+      &_2 {
+        bottom: 120px;
+      }
+      &_3 {
+        width: 150%;
+        bottom: 65px;
+      }
+    }
+  }
+
+  .tube {
+    display: none;
+    height: 39px;
+    position: absolute;
+    bottom: 130px;
+    z-index: -1;
+
+    &_left {
+      left: 0;
+    }
+    &_right {
+      right: 0;
+      transform: scale(-1, 1);
+    }
+  }
+
+  &.step_1 {
+    .animate_step_1 {
+      display: block;
+    }
+  }
+  &.step_2, &.in-progress {
+    .animate_step_2 {
+      display: block;
+    }
+  }
+  &.embrion-start {
+    .embrion {
+      display: block;
+    }
+
+    &.on {
+      .embrion {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+    }
+  }
+  &.in-progress {
+    .embrion {
+      display: block;
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+    }
+  }
+
+  &.splash_1_start {
+    .splash_1 {
+      display: block;
+    }
+  }
+  &.splash_2_start {
+    .splash_2 {
+      display: block;
+    }
+  }
+  &.splash_3_start {
+    .splash_3 {
+      display: block;
+    }
+  }
+  &.started, &.in-progress {
+    .box {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .start_screen {
+      display: none;
+    }
+    .robot-hand {
+      opacity: 1;
+      transition: opacity .5s 4s;
+    }
+    .plate {
+      display: none;
+    }
+    .tube {
+      display: block;
+    }
+  }
+
+  .box {
+    width: 100%;
+    border-radius: $border-radius-md;
+  }
+
+  .plate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 16px 18px;
+    width: 287px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    font-size: 19px;
+    font-weight: $font-weight_bold;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: 0 6px 6px rgba(0, 0, 0, 0.26);
+    text-align: center;
+    color: $white;
+    cursor: pointer;
+    position: absolute;
+    bottom: -1px;
+    z-index: 2;
+
+    &.big {
+      height: 98px;
+      background-image: url(../images/plate-big.svg);
+    }
+    &.small {
+      height: 76px;
+      background-image: url(../images/plate-small.svg);
+    }
+  }
+}

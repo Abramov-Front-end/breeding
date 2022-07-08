@@ -1,0 +1,42 @@
+//base colors
+$white:			white;
+$grey_light: 	#EAEAEA;
+$grey: 	        #ADADAD;
+$black:     	black;
+
+$yellow:        #FFE600;
+$yellow_dark:   #FFBD58;
+$orange:        #F85D00;
+$red: 	        #FB2D88;
+$blue: 	        #683AFD;
+$blue_dark: 	#4A18D1;
+$blue_darken: 	#1E2236;
+$green_light:   #1DCAC6;
+$green:         #24FF00;
+
+
+$color_text:	$blue_darken;
+
+$gradient-primary:      linear-gradient(180deg, $red 0%, $blue 100%);
+$gradient-secondary:    radial-gradient(50% 1905.86% at 50% 50%, $yellow 0%, $yellow_dark 100%);
+$gradient-card:         linear-gradient(180deg, #E4E5EC 0%, #F2EEF0 100%);
+$gradient-progress:     radial-gradient(50% 1905.86% at 50% 50%, $green 0%, #58FF9B 100%);
+
+$bg_box:            rgba($white, 0.86);
+$bs_box:            0px 6px 6px rgba($black, 0.06);
+
+$bg_btn_primary:    $gradient-primary;
+$bs_btn_primary:    0px 3px 0px $blue_dark;
+
+$bg_btn_secondary:  $gradient-secondary;
+$bs_btn_secondary:  0px 4px 0px $orange;
+
+$bg_btn_close:      $white;
+$bs_btn_close:      0px 3px 0px $blue_dark;
+
+$bg_btn_not_active: $grey_light;
+
+$bg_dropdown:       $white;
+$bs_dropdown:       0px 6px 6px rgba($black, 0.06);
+
+

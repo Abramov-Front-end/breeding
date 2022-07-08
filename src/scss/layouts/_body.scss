@@ -1,0 +1,39 @@
+$sm:  540px;
+$md:  767px;
+$lg:  1023px;
+$xl:  1560px;
+
+body {
+	font-family: $font-family;
+	font-style: normal;
+	font-weight: $font-weight_regular;
+	font-size: $font-size;
+	color: $color_text;
+	line-height: $line-height;
+
+	@media (max-width: $sm) {
+		font-size: $font-size-sm;
+		line-height: $line-height;
+	}
+}
+
+h1 {
+	font-size: $font-size-lg;
+	font-weight: $font-weight_bold;
+	line-height: $line-height-bg;
+}
+
+b,
+strong {
+	font-weight: $font-weight_bold;
+}
+
+i,
+em {
+	font-style: italic;
+}
+
+a {
+	text-decoration: none;
+	color: $color_text;
+}

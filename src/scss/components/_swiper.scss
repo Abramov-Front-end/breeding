@@ -1,0 +1,226 @@
+.swiper-overflow {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .empty-block {
+    display: none;
+    text-align: center;
+
+    b {
+      font-size: 19px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  &.big {
+    padding: 0 54px 28px;
+    height: 165px;
+
+    .swiper-slide {
+      display: flex;
+      margin-right: 28px;
+      width: 120px;
+      height: 120px;
+      position: relative;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 16px;
+    }
+
+    .swiper-button-next {
+      right: 16px;
+    }
+
+    .swiper-scrollbar {
+      height: 6px;
+      background: rgba(198, 198, 198, 0.36);
+      border-radius: 3px;
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 8px;
+
+      &-drag {
+        height: 100%;
+        border-radius: 3px;
+        cursor: pointer;
+        background: #C6C6C6;
+      }
+    }
+
+    .empty-block {
+      b {
+        color: $grey;
+      }
+    }
+  }
+
+  &.small {
+    width: 100%;
+    height: 74px;
+    padding: 6px 28px 8px;
+
+    .swiper {
+      padding-top: 0;
+
+      &-slide {
+        display: flex;
+        padding-top: 0;
+        justify-content: center;
+        align-items: center;
+        margin-right: 12px;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        background: #01122A;
+
+        img {
+          display: block;
+          width: 58px;
+          height: 59px;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      &-button {
+        &-prev,
+        &-next {
+          width: 9px;
+          height: 31px;
+
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+        &-prev {
+          left: 7px;
+        }
+        &-next {
+          right: 7px;
+        }
+      }
+    }
+
+    .locked {
+      cursor: default;
+
+      &:before {
+        background-size: 33px 29px;
+      }
+    }
+
+    empty-block {
+      b {
+        color: $red;
+      }
+    }
+  }
+
+  .swiper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 17px;
+
+    &-wrapper {
+      display: flex;
+    }
+
+    &-button {
+      &-prev,
+      &-next {
+        position: absolute;
+        cursor: pointer;
+      }
+      &-disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+  }
+
+  &.empty {
+    padding: 10px;
+
+    .swiper {
+      display: flex;
+      padding-top: 0;
+      width: 100%;
+      justify-content: center;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+
+    .empty-block {
+      display: block;
+    }
+  }
+}
+
+.cryo-swiper {
+  position: relative;
+
+  .swiper-wrapper {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  .swiper-slide {
+    transform-style: preserve-3d;
+    transition-property: transform, opacity;
+    opacity: 0;
+
+    &-prev,
+    &-next {
+      opacity: 0.46;
+    }
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  &-navigation {
+    display: flex;
+    align-items: center;
+
+    .swiper-button {
+      flex: 0 0 auto;
+      cursor: pointer;
+
+      &-prev {
+        margin-right: 18px;
+      }
+      &-next {
+        margin-left: 18px;
+      }
+    }
+    .swiper-scrollbar {
+      flex: 1 1 auto;
+      height: 14px;
+      background: rgba($white, 0.46);
+      border-radius: 7px;
+
+      &-drag {
+        height: 100%;
+        background: $white;
+        cursor: pointer;
+        border-radius: 7px;
+      }
+    }
+  }
+}

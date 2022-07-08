@@ -1,0 +1,17 @@
+.footer {
+  &__inner {
+    flex-direction: column;
+    padding-bottom: 70px;
+  }
+  &__title {
+    margin-bottom: 10px;
+    font-size: $font-size-md;
+    font-weight: $font-weight_bold;
+    text-transform: uppercase;
+    color: $white;
+    letter-spacing: 0.06em;
+  }
+  .box {
+    border-radius: $border-radius-md;
+  }
+}

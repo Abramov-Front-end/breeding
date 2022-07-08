@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>BREEDING</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="site-wrap">
+    <header class="header">
+        <div class="header__inner">
+            <a href="#" class="header__logo">
+                <img src="images/logo.svg" class="header__logo_img" alt="BREEDING">
+                <span class="header__logo_text">
+                    Generation Q <b>BREEDING</b>
+                </span>
+            </a>
+            <div class="wallet-block" id="WalletBlock">
+                <button class="wallet-block__btn btn btn_color_primary btn_size_big" id="WalletDropdownBtn">
+                    NFT Wallet <img src="images/wallet.svg" class="wallet-block__btn__icon" alt="Wallet">
+                </button>
+                <div class="wallet-block__dropdown">
+                    <button class="wallet-block__dropdown__close btn btn_close btn_size_big btn_color_close" id="WalletDropdownCloseBtn">
+                        <img src="images/close.svg" alt="Close">
+                    </button>
+                    <div class="wallet-block__dropdown__list">
+                        <div class="wallet-block__search">
+                            <input type="text" class="wallet-block__search__input" placeholder="Search NFTs">
+                            <div class="wallet-block__search__sort">
+                                <div class="radio">
+                                    <input checked type="radio" name="sortby" id="SortByRaeity">
+                                    <label class="btn btn_size_medium wallet-block__radio" for="SortByRaeity">
+                                        Sort By Rarity
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="sortby" id="SortByID">
+                                    <label class="btn btn_size_medium wallet-block__radio" for="SortByID">
+                                        Sort By ID
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wallet-block__content">
+                            <ul class="wallet-block__filters">
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabShowAll">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabShowAll">
+                                        Show All
+                                    </label>
+                                </li>
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabLovePotions">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabLovePotions">
+                                        Love Potions
+                                    </label>
+                                </li>
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabBabies">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabBabies">
+                                        Babies
+                                    </label>
+                                </li>
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabMadHares">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabMadHares">
+                                        Mad Hares
+                                    </label>
+                                </li>
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabPhychoMollies">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabPhychoMollies">
+                                        Phycho Mollies
+                                    </label>
+                                </li>
+                                <li class="radio">
+                                    <input checked type="radio" name="filter" id="TabPsychoKitties">
+                                    <label class="btn btn_size_medium btn_type_tab wallet-block__radio" for="TabPsychoKitties">
+                                        Psycho Kitties
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <input type="checkbox" name="not_used" id="NotUsed">
+                                    <label for="NotUsed">Not Used</label>
+                                </li>
+                            </ul>
+                            <div class="swiper-scroll">
+                                <ul class="swiper-wrapper nft-list">
+                                    <!-- NFT card start -->
+                                    <li class="swiper-slide nft-list__card locked">
+                                        <div class="nft-list__card__img">
+                                            <img src="images/temp/father1.png" alt="">
+                                        </div>
+                                        <div class="nft-card nft-list__card__description">
+                                            <div class="nft-card__title">
+                                                PsychoKitties <br>
+                                                #1491
+                                            </div>
+                                            <div class="nft-card__rank">
+                                                <div class="nft-card__rank__item">
+                                                    <div class="nft-card__rank__key">Score: </div>
+                                                    <div class="nft-card__rank__value">0.2601273</div>
+                                                </div>
+                                                <div class="nft-card__rank__item">
+                                                    <div class="nft-card__rank__key">Rank: </div>
+                                                    <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nft-list__card__buttons">
+                                            <a href="#" class="btn btn_type_use btn_type_use_male">USE AS MALE</a>
+                                            <a href="#" class="btn btn_crypto">
+                                                View on <img src="images/crypto.com.png" alt="Crypto.com">
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <!-- NFT card END -->
+                                    <!-- NFT card start -->
+                                    <li class="swiper-slide nft-list__card">
+                                        <div class="nft-list__card__img">
+                                            <img src="images/temp/mother1.png" alt="">
+                                        </div>
+                                        <div class="nft-card nft-list__card__description">
+                                            <div class="nft-card__title">
+                                                Phycho Mollies <br>
+                                                #8776
+                                            </div>
+                                            <div class="nft-card__rank">
+                                                <div class="nft-card__rank__item">
+                                                    <div class="nft-card__rank__key">Score: </div>
+                                                    <div class="nft-card__rank__value">0.2601273</div>
+                                                </div>
+                                                <div class="nft-card__rank__item">
+                                                    <div class="nft-card__rank__key">Rank: </div>
+                                                    <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nft-list__card__buttons">
+                                            <a href="#" class="btn btn_type_use btn_type_use_female">Use as FEMale</a>
+                                            <a href="#" class="btn btn_crypto">
+                                                View on <img src="images/crypto.com.png" alt="Crypto.com">
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <!-- NFT card END -->
+
+                                    <!-- NFT card start -->
+                                    <li class="swiper-slide nft-list__card">
+                                        <div class="nft-list__card__img">
+                                            <img src="images/temp/baby1.png" alt="">
+                                        </div>
+                                        <div class="nft-card nft-list__card__description">
+                                            <div class="nft-card__title">
+                                                Baby <br>
+                                                #0002
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- NFT card END -->
+
+                                    <!-- NFT card start -->
+                                    <li class="swiper-slide nft-list__card">
+                                        <div class="nft-list__card__img">
+                                            <img src="images/temp/potion.png" alt="">
+                                        </div>
+                                        <div class="nft-card nft-list__card__description">
+                                            <div class="nft-card__title">
+                                                Love Potion <br>
+                                                #0003
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- NFT card END -->
+
+                                </ul>
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content__inner">
+            <h1 class="title">The time has come to witness the birth of <span>genetically modified creatures</span></h1>
+            <div class="cryogenic-wrapper">
+                <div class="cryogenic__chosen cryogenic__chosen_male">
+                    <h2 class="cryogenic__chosen__title">Choose a male</h2>
+                    <div class="cryo-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/father_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cryo-swiper-navigation">
+                            <div class="swiper-button swiper-button-prev">
+                                <img src="images/arrow-l-w.svg" alt="">
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                            <div class="swiper-button swiper-button-next">
+                                <img src="images/arrow-r-w.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cryogenic">
+                    <div class="creo-camera" id="creoCamera">
+                        <img src="images/animation/creo_camera_step_1.svg" alt="" class="creo-camera__img start_screen">
+                        <object data="images/animation/creo_camera_step_1.svg" type="image/svg+xml" class="creo-camera__img start_screen"></object>
+                        <img src="images/animation/creo_camera_step_2.svg" alt="" class="creo-camera__img animate_step_1">
+                        <object data="images/animation/right_robot_hand.svg" type="image/svg+xml" class="robot-hand robot-hand_left"></object>
+                        <object data="images/animation/creo_camera_step_2.svg" type="image/svg+xml" class="creo-camera__img animate_step_1"></object>
+                        <object data="images/animation/left_robot_hand.svg" type="image/svg+xml" class="robot-hand robot-hand_right"></object>
+                        <img src="images/animation/creo_camera_step_3.svg" alt="" class="creo-camera__img animate_step_2">
+                        <object data="images/animation/creo_camera_step_3.svg" type="image/svg+xml" class="creo-camera__img animate_step_2"></object>
+                        <object data="images/animation/embrion.svg" type="image/svg+xml" class="embrion"></object>
+<!--                        <img src="images/animation/embrion.svg" alt="" class="embrion">-->
+                        <object data="images/animation/embrion.svg" type="image/svg+xml" class="embrion"></object>
+                        <object data="images/animation/splash_01.svg" type="image/svg+xml" class="splash splash_1"></object>
+                        <object data="images/animation/splash_02.svg" type="image/svg+xml" class="splash splash_2"></object>
+                        <object data="images/animation/splash_03.svg" type="image/svg+xml" class="splash splash_3"></object>
+                        <div class="plate small">Click on love potion to activate breeding</div>
+<!--                        <div class="plate big">Click on Cryogenic Camera to initiate breeding</div>-->
+                        <audio src="audio/01_sound_water.mp3" preload="auto" loop>
+                            Your browser does not support the
+                            <code>audio</code> element.
+                        </audio>
+                    </div>
+                    <div class="box">
+                        <div class="swiper-overflow small">
+                            <div class="swiper">
+                                <div class="swiper-button-prev">
+                                    <img src="images/arrow-l-b.svg" alt="">
+                                </div>
+                                <div class="swiper-wrapper">
+                                    <!-- Slide -->
+                                    <div class="swiper-slide nft-item locked">
+                                        <img src="images/potion.png" alt="" class="nft-item__img">
+                                    </div>
+                                    <!-- Slide -->
+                                </div>
+                                <div class="swiper-button-next">
+                                    <img src="images/arrow-r-b.svg" alt="">
+                                </div>
+                                <div class="empty-block">
+                                    <b>You haven’t Any Love Potions Yet</b>
+                                    <a href="#" class="btn btn_crypto">
+                                        Buy on <img src="images/crypto.com.png" alt="Crypto.com">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <object data="images/animation/tube.svg" type="image/svg+xml" class="tube tube_left"></object>
+                    <object data="images/animation/tube.svg" type="image/svg+xml" class="tube tube_right"></object>
+                </div>
+                <div class="cryogenic__chosen cryogenic__chosen_female">
+                    <h2 class="cryogenic__chosen__title">Choose a female</h2>
+                    <div class="cryo-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide -->
+                            <div class="swiper-slide box nft-card nft-card_big">
+                                <div class="nft-card__image">
+                                    <img src="images/temp/mother_big1.png" alt="">
+                                </div>
+                                <div class="nft-card__title">Mad Hare #123</div>
+                                <div class="nft-card__rank">
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Score: </div>
+                                        <div class="nft-card__rank__value">0.2601273</div>
+                                    </div>
+                                    <div class="nft-card__rank__item">
+                                        <div class="nft-card__rank__key">Rank: </div>
+                                        <div class="nft-card__rank__value"><span>4616</span> / 10000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cryo-swiper-navigation">
+                            <div class="swiper-button swiper-button-prev">
+                                <img src="images/arrow-l-w.svg" alt="">
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                            <div class="swiper-button swiper-button-next">
+                                <img src="images/arrow-r-w.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer__inner">
+            <h2 class="footer__title">My Breedings:</h2>
+            <div class="box">
+                <div class="swiper-overflow big">
+                    <div class="swiper">
+                        <div class="swiper-button-prev">
+                            <img src="images/arrow-l-b.svg" alt="">
+                        </div>
+                        <div class="swiper-wrapper">
+                            <!-- Slide -->
+<!--                            <div class="swiper-slide nft-item">-->
+<!--                                <div class="nft-item__indicator nft-item__timer">03:21</div>-->
+<!--                                <img src="images/new-nft.svg" alt="" class="nft-item__img">-->
+<!--                                <div class="nft-item__progress-bar">-->
+<!--                                    <div class="nft-item__progress-bar__handler" style="width: 35%"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <!-- Slide -->
+<!--                            <div class="swiper-slide nft-item">-->
+<!--                                <div class="nft-item__indicator nft-item__repack">Reveal Now!</div>-->
+<!--                                <img src="images/new-nft.svg" alt="" class="nft-item__img">-->
+<!--                                <div class="nft-item__progress-bar finished">-->
+<!--                                    <div class="nft-item__progress-bar__handler" style="width: 100%"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+                        </div>
+                        <div class="swiper-button-next">
+                            <img src="images/arrow-r-b.svg" alt="">
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                        <div class="empty-block">
+                            <b>You haven’t Any Breedings Yet <br>
+                                They will be displayed as soon as you start breeding</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<video autoplay muted loop id="bgVideo">
+    <source src="video/background_video_1.webm" type="video/webm">
+</video>
+<script src="js/swiper.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

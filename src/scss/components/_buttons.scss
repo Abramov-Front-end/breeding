@@ -1,0 +1,93 @@
+.btn {
+  display: inline-flex;
+  padding: 0 14px;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  &_close {
+    padding: 0;
+    width: 46px;
+    justify-content: center;
+  }
+
+  &_size {
+
+    &_big {
+      height: 46px;
+      border-radius: $border-radius-bg;
+      font-size: $font-size-md;
+      font-weight: $font-weight_medium;
+    }
+    &_medium {
+      height: 38px;
+      border-radius: $border-radius;
+    }
+  }
+
+  &_color {
+
+    &_primary {
+      background: $gradient-primary;
+      color: $white;
+      box-shadow: $bs_btn_primary;
+    }
+    &_secondary {
+      background: $gradient-secondary;
+      color: $blue_darken;
+    }
+    &_close {
+      background: $white;
+      box-shadow: $bs_btn_primary;
+    }
+  }
+
+  &_type {
+    &_tab {
+      background: $grey_light;
+      color: $color_text;
+      border-radius: $border-radius-md;
+      height: 36px;
+    }
+
+    &_use {
+      margin-bottom: 12px;
+      width: 180px;
+      height: 62px;
+      justify-content: center;
+      border: 2px solid;
+      border-radius: $border-radius;
+      font-size: $font-size-sm;
+      font-weight: $font-weight_medium;
+      text-transform: uppercase;
+
+      &_male {
+        border-color: $blue;
+        color: $blue;
+      }
+
+      &_female {
+        border-color: $red;
+        color: $red;
+      }
+    }
+  }
+
+  &_crypto {
+    justify-content: center;
+    padding: 4px 7px 4px 9px;
+    width: 180px;
+    background: $blue_darken;
+    border-radius: $border-radius;
+    color: $white;
+    font-weight: $font-weight_medium;
+    font-size: $font-size;
+
+    img {
+      display: block;
+      margin-left: 4px;
+      height: 23px;
+    }
+  }
+}
