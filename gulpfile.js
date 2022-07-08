@@ -5,7 +5,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('autoprefixer')
 const postcss = require('gulp-postcss')
 
-const publicCss = 'public/css'
+const publicCss = 'docs/css'
 const srcSCSS = 'src/scss/**/*.scss'
 
 //Compile styles
