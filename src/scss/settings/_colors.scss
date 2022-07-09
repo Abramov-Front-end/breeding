@@ -17,7 +17,9 @@ $green:         #24FF00;
 
 $color_text:	$blue_darken;
 
-$gradient-primary:      linear-gradient(180deg, $red 0%, $blue 100%);
+$gradient-primary:        linear-gradient(180deg, $red 0%, $blue 100%);
+$gradient-primary_hover:  linear-gradient(0deg, $red 0%, $blue 100%);
+
 $gradient-secondary:    radial-gradient(50% 1905.86% at 50% 50%, $yellow 0%, $yellow_dark 100%);
 $gradient-card:         linear-gradient(180deg, #E4E5EC 0%, #F2EEF0 100%);
 $gradient-progress:     radial-gradient(50% 1905.86% at 50% 50%, $green 0%, #58FF9B 100%);
@@ -25,17 +27,20 @@ $gradient-progress:     radial-gradient(50% 1905.86% at 50% 50%, $green 0%, #58F
 $bg_box:            rgba($white, 0.86);
 $bs_box:            0px 6px 6px rgba($black, 0.06);
 
-$bg_btn_primary:    $gradient-primary;
-$bs_btn_primary:    0px 3px 0px $blue_dark;
+$bg_btn_primary:          $gradient-primary;
+$bg_btn_primary_hover:    $gradient-primary_hover;
+$bs_btn_primary:          0px 3px 0px $blue_dark;
 
-$bg_btn_secondary:  $gradient-secondary;
-$bs_btn_secondary:  0px 4px 0px $orange;
+$bg_btn_secondary:        $gradient-secondary;
+$bg_btn_secondary_hover:  #FFEC42;
+$bs_btn_secondary:        0px 4px 0px $orange;
 
 $bg_btn_close:      $white;
 $bs_btn_close:      0px 3px 0px $blue_dark;
 
-$bg_btn_open:  $gradient-progress;
-$bs_btn_open:  0px 4px 0px #2FB082;;
+$bg_btn_open:         $gradient-progress;
+$bg_btn_open_hover:   #98FFA8;
+$bs_btn_open:         0px 4px 0px #2FB082;;
 
 $bg_btn_not_active: $grey_light;
 

@@ -35,16 +35,28 @@
       background: $gradient-primary;
       color: $white;
       box-shadow: $bs_btn_primary;
+
+      &:hover {
+        background: $bg_btn_primary_hover;
+      }
     }
     &_secondary {
       background: $gradient-secondary;
       color: $blue_darken;
       box-shadow: $bs_btn_secondary;
+
+      &:hover {
+        background: $bg_btn_secondary_hover;
+      }
     }
     &_open {
       background: $bg_btn_open;
       color: $blue_darken;
       box-shadow: $bs_btn_open;
+
+      &:hover {
+        background: $bg_btn_open_hover;
+      }
     }
     &_close {
       background: $white;
@@ -75,11 +87,21 @@
       &_male {
         border-color: $blue;
         color: $blue;
+
+        &:hover {
+          background: $blue;
+          color: $white;
+        }
       }
 
       &_female {
         border-color: $red;
         color: $red;
+
+        &:hover {
+          background: $red;
+          color: $white;
+        }
       }
     }
   }
@@ -94,6 +116,10 @@
     font-weight: $font-weight_medium;
     font-size: $font-size;
     white-space: normal;
+
+    &:hover {
+      background: #683AFD;
+    }
 
     img {
       display: block;
