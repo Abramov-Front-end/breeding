@@ -359,7 +359,7 @@
     bottom: -1px;
     z-index: 2;
 
-    &.ready-for-breeding {
+    &.ready-for-breeding, &.not-ready-parent {
       height: 98px;
       background-image: url(../images/plate-big.svg);
       bottom: 107px;

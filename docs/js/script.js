@@ -198,15 +198,15 @@ Breeding.prototype.finish = function() {
 Breeding.prototype.checkReady = function() {
 
     const plateNotReady = this.cryogenicEl.querySelector('.plate.not-ready-for-breeding')
+    const plateNotReadyParent = this.cryogenicEl.querySelector('.plate.not-ready-parent')
     const plateReady = this.cryogenicEl.querySelector('.plate.ready-for-breeding')
 
-    console.log(plateNotReady);
+    breedingState.status = false
 
     if ( breedingState.step === 'start' ) {
         plateNotReady.classList.add('show')
         plateReady.classList.remove('show')
-
-        breedingState.status = false
+        plateNotReadyParent.classList.remove('show')
     }
 
     if ( breedingState.step === 'potion-checked' ) {
@@ -215,9 +215,11 @@ Breeding.prototype.checkReady = function() {
 
         if ( !sliders.cryo.lockCheck() ) {
             plateReady.classList.add('show')
+            plateNotReadyParent.classList.remove('show')
             breedingState.status = true
         } else {
             plateReady.classList.remove('show')
+            plateNotReadyParent.classList.add('show')
             breedingState.status = false
         }
     }
