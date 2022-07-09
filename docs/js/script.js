@@ -1,3 +1,14 @@
+const breedingNew = document.getElementById('breedingNew')
+const revealNow = document.getElementById('revealNow')
+const cryogenicEl = document.querySelector('.cryogenic')
+let creoCamera = document.getElementById('creoCamera')
+let potionsSlider = document.getElementById('potionsSlider')
+
+const breedingState = {
+    status: false,
+    step: 'start'
+}
+
 //Wallet
 const walletBlock = document.getElementById('WalletBlock')
 
@@ -21,78 +32,6 @@ walletBlock.addEventListener('click', function(e){
 
 })
 
-//Swipers
-const dropdownScroll = new Swiper('.swiper-scroll', {
-    direction: "vertical",
-    slidesPerView: "auto",
-    freeMode: true,
-    scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true
-    },
-    mousewheel: true,
-})
-
-const swipers = document.querySelectorAll('.swiper')
-const cryoSwipers = document.querySelectorAll('.cryo-swiper')
-
-const cryoSwipersArray = []
-const swipersArray = []
-swipers.forEach(e => {
-    swipersArray.push(
-        new Swiper(e, {
-            slidesPerView: "auto",
-            freeMode: true,
-            navigation: {
-                prevEl: e.querySelector('.swiper-button-prev'),
-                nextEl: e.querySelector('.swiper-button-next'),
-            },
-            scrollbar: {
-                el: e.querySelector('.swiper-scrollbar'),
-                draggable: true,
-            },
-            mousewheel: {
-                forceToAxis: true
-            },
-            on: {
-                init: function(el) {
-                    if ( !el.slides.length ) {
-                        el.$el.closest('.swiper-overflow')[0].classList.add('empty')
-                    } else {
-                        el.$el.closest('.swiper-overflow')[0].classList.remove('empty')
-                    }
-                }
-            }
-        })
-    )
-})
-cryoSwipers.forEach(e => {
-    cryoSwipersArray.push(
-        new Swiper(e, {
-            effect: 'coverflow',
-            centeredSlides: true,
-            slidesPerView: 1,
-            initialSlide: 1,
-            navigation: {
-                prevEl: e.querySelector('.swiper-button-prev'),
-                nextEl: e.querySelector('.swiper-button-next'),
-            },
-            scrollbar: {
-                el: e.querySelector('.swiper-scrollbar'),
-                draggable: true,
-            },
-            mousewheel: {
-                forceToAxis: true
-            },
-            coverflowEffect: {
-                rotate: 0,
-                scale: 0.65,
-                stretch: 192
-            },
-        })
-    )
-})
-
 //Timers
 function Timer (el, timeStart, timeNow) {
     this.el = el
@@ -105,7 +44,6 @@ Timer.prototype.start = function (stopFunc) {
     const timeFinished = this.timeStart.getTime() + total*60*1000
 
     this.stopFunc = stopFunc
-    this.el.classList.add('show')
 
     this.interval = setInterval(function(){
         const timeLeft = timeFinished - new Date().getTime()
@@ -122,18 +60,20 @@ Timer.prototype.start = function (stopFunc) {
     }.bind(this), 1000)
 }
 Timer.prototype.stop = function(stopfunc) {
-    this.el.classList.remove('show')
     clearInterval(this.interval)
     stopfunc()
+}
+Timer.prototype.clear = function() {
+    clearInterval(this.interval)
+    this.el.innerHTML = '00:00'
 }
 
 //CreoCamera
 
-const creoCamera = document.getElementById('creoCamera')
-
 function Breeding() {
-    this.cryogenicEl = document.querySelector('.cryogenic')
-
+    this.cryogenicEl = cryogenicEl
+    this.timeouts = []
+    this.timer = null
     this.sounds = {}
     this.sounds.water = new Audio('audio/01_sound_water.mp3')
     this.sounds.splash = new Audio('audio/02_sound_splash.mp3')
@@ -143,67 +83,102 @@ function Breeding() {
     this.sounds.mutant2 = new Audio('audio/04_sound_mutant.mp3')
     this.sounds.complete = new Audio('audio/06_breeding_complete.mp3?v01')
     this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3?v01')
+
+    this.timeoutFunc = function(func, time) {
+        this.timeouts.push(
+            setTimeout(func.bind(this), time)
+        )
+    }
+
 }
 
 Breeding.prototype.start = function() {
+
+    if ( !this.checkReady() ) return false
+
+    breedingState.step = 'in-progress'
+
     this.cryogenicEl.className = 'cryogenic started step_1'
     this.sounds.water.play()
 
-    const timerEl = creoCamera.querySelector('.nft-timer')
-    const timer = new Timer(timerEl, new Date(), new Date())
+    sliders.cryo.disable()
+    sliders.cryo.lockSlide()
 
-    timer.start(this.finish.bind(this))
+    const timerEl = creoCamera.querySelector('.breeding-timer')
 
-    setTimeout(function() {
+    this.timer = new Timer(timerEl, new Date(), new Date())
+    this.timer.start(this.finish.bind(this))
+
+    this.timeoutFunc(function() {
         this.cryogenicEl.classList.add('embrion-start')
         this.cryogenicEl.classList.add('splash_1_start')
 
-        setTimeout(function() {
+        this.timeoutFunc(function() {
             this.cryogenicEl.classList.add('on')
+        }, 50)
 
-        }.bind(this), 50)
-
-        setTimeout(function () {
+        this.timeoutFunc(function() {
             this.sounds.splash.play()
-        }.bind(this), 400)
+        }, 400)
 
-        setTimeout(function () {
+        this.timeoutFunc(function() {
             this.sounds.robot.play()
+        }, 600)
 
-        }.bind(this), 600)
+    }, 3500)
 
-    }.bind(this), 3500)
-
-    setTimeout(function() {
+    this.timeoutFunc(function() {
         this.cryogenicEl.classList.remove('splash_1_start')
         this.cryogenicEl.classList.add('splash_2_start')
 
-        setTimeout(function () {
+        this.timeoutFunc(function() {
             this.sounds.mutant1.play()
-        }.bind(this), 400)
+        }, 400)
 
-    }.bind(this), 4500)
+    }, 4500)
 
-    setTimeout(function() {
+    this.timeoutFunc(function() {
         this.cryogenicEl.classList.remove('splash_2_start')
         this.cryogenicEl.classList.add('splash_3_start')
 
-        setTimeout(function () {
+        this.timeoutFunc(function() {
             this.sounds.mutant2.play()
-        }.bind(this), 400)
+        }, 400)
+    }, 5500)
 
-    }.bind(this), 5500)
-
-    setTimeout(function() {
+    this.timeoutFunc(function() {
         this.cryogenicEl.classList.remove('step_1')
         this.cryogenicEl.classList.add('step_2')
-    }.bind(this), 6000)
+    }, 6000)
 
-    setTimeout(function() {
+    this.timeoutFunc(function() {
         this.cryogenicEl.className = 'cryogenic in-progress'
-    }.bind(this), 6300)
+    }, 6300)
 }
+Breeding.prototype.reload = function() {
+    this.cryogenicEl.className = 'cryogenic'
 
+    sliders.cryo.enable()
+
+    for ( let timeout of this.timeouts ) {
+        clearTimeout(timeout)
+    }
+    for ( let sound in this.sounds ) {
+        this.sounds[sound].pause()
+        this.sounds[sound].currentTime = 0
+    }
+
+    this.timer.clear()
+
+    const creoCameraWrapper = this.cryogenicEl.querySelector('.creo-camera-wrapper')
+    const content = creoCameraWrapper.cloneNode(true)
+          creoCameraWrapper.remove()
+          this.cryogenicEl.prepend(content)
+
+    creoCamera = document.getElementById('creoCamera')
+    breedingState.step = 'start'
+    breeding.checkReady()
+}
 Breeding.prototype.finish = function() {
 
     this.cryogenicEl.className = 'cryogenic in-progress completed'
@@ -217,9 +192,187 @@ Breeding.prototype.finish = function() {
     setTimeout(function(){
         this.cryogenicEl.className = 'cryogenic completed on'
     }.bind(this), 1100)
+
+    breedingState.step = 'completed'
+}
+Breeding.prototype.checkReady = function() {
+
+    const plateNotReady = this.cryogenicEl.querySelector('.plate.not-ready-for-breeding')
+    const plateReady = this.cryogenicEl.querySelector('.plate.ready-for-breeding')
+
+    console.log(plateNotReady);
+
+    if ( breedingState.step === 'start' ) {
+        plateNotReady.classList.add('show')
+        plateReady.classList.remove('show')
+
+        breedingState.status = false
+    }
+
+    if ( breedingState.step === 'potion-checked' ) {
+
+        plateNotReady.classList.remove('show')
+
+        if ( !sliders.cryo.lockCheck() ) {
+            plateReady.classList.add('show')
+            breedingState.status = true
+        } else {
+            plateReady.classList.remove('show')
+            breedingState.status = false
+        }
+    }
+
+    return breedingState.status
 }
 const breeding = new Breeding()
 
-creoCamera.addEventListener('click', function(e) {
-    breeding.start()
+//Swipers
+const sliders = {
+    scroll: {
+        init: function() {
+            new Swiper('.swiper-scroll', {
+                direction: "vertical",
+                slidesPerView: "auto",
+                freeMode: true,
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    draggable: true
+                },
+                mousewheel: true,
+            })
+        }
+    },
+    nft: {
+        array: [],
+        init: function(el) {
+            el.forEach(e => {
+                this.array.push(
+                    new Swiper(e, {
+                        slidesPerView: "auto",
+                        freeMode: true,
+                        navigation: {
+                            prevEl: e.querySelector('.swiper-button-prev'),
+                            nextEl: e.querySelector('.swiper-button-next'),
+                        },
+                        scrollbar: {
+                            el: e.querySelector('.swiper-scrollbar'),
+                            draggable: true,
+                        },
+                        mousewheel: {
+                            forceToAxis: true
+                        },
+                        on: {
+                            init: function(swiper) {
+                                const swiperOverflow = swiper.$el.closest('.swiper-overflow')[0]
+                                if ( swiperOverflow ) {
+                                    if ( !swiper.slides.length ) {
+                                        swiperOverflow.classList.add('empty')
+                                    } else {
+                                        swiperOverflow.classList.remove('empty')
+                                    }
+                                }
+                            }
+                        }
+                    })
+                )
+            })
+        }
+    },
+    cryo: {
+        array: [],
+        init: function(el) {
+            el.forEach(e => {
+                this.array.push(
+                    new Swiper(e, {
+                        effect: 'coverflow',
+                        centeredSlides: true,
+                        slidesPerView: 1,
+                        initialSlide: 1,
+                        navigation: {
+                            prevEl: e.querySelector('.swiper-button-prev'),
+                            nextEl: e.querySelector('.swiper-button-next'),
+                        },
+                        scrollbar: {
+                            el: e.querySelector('.swiper-scrollbar'),
+                            draggable: true,
+                        },
+                        mousewheel: {
+                            forceToAxis: true
+                        },
+                        coverflowEffect: {
+                            rotate: 0,
+                            scale: 0.65,
+                            stretch: 192
+                        },
+                        on: {
+                            slideChange: function() {
+                                breeding.checkReady()
+                            }
+                        }
+                    })
+                )
+            })
+        },
+        disable: function() {
+            this.array.forEach(function(e) {
+                e.$el[0].classList.add('disabled')
+                e.disable()
+            })
+        },
+        enable: function() {
+            this.array.forEach(function(e) {
+                e.$el[0].classList.remove('disabled')
+                e.enable()
+            })
+        },
+        lockSlide: function() {
+            this.array.forEach(function(e) {
+                const activeSlide = e.slides[e.activeIndex]
+                activeSlide.classList.add('locked-slide')
+            })
+        },
+        unlockSlide: function() {
+            this.array.forEach(function(e) {
+                const activeSlide = e.slides[e.activeIndex]
+                activeSlide.classList.remove('locked-slide')
+            })
+        },
+        lockCheck: function() {
+            let status = false
+            for ( let slider of this.array ) {
+                const activeSlide = slider.slides[slider.activeIndex]
+                if ( activeSlide.classList.contains('locked-slide') ) {
+                    status = true
+                    break
+                }
+            }
+            return status
+        }
+    }
+}
+sliders.scroll.init()
+sliders.nft.init(document.querySelectorAll('.swiper'))
+sliders.cryo.init(document.querySelectorAll('.cryo-swiper'))
+
+
+//EventListeners
+cryogenicEl.addEventListener('click', function(e) {
+    if ( !breedingState.status ) return false
+    if ( e.target.closest('#creoCamera') ) breeding.start()
+})
+
+potionsSlider.addEventListener('click', function(e) {
+    const potion = e.target.closest('.swiper-slide')
+
+    if ( potion && !potion.classList.contains('locked') && breedingState.step !== 'potion-checked') {
+        potion.classList.add('locked')
+        breedingState.step = 'potion-checked'
+
+        breeding.checkReady()
+    }
+
+})
+breedingNew.addEventListener('click', function(e){
+    e.preventDefault()
+    breeding.reload()
 })

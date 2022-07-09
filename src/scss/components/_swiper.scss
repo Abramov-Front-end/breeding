@@ -63,7 +63,7 @@
     }
   }
 
-  &.small {
+  &.slider-potions {
     width: 100%;
     height: 74px;
     padding: 6px 28px 8px;
@@ -192,6 +192,12 @@
     &-active {
       opacity: 1;
     }
+
+    &.locked-slide {
+      .nft-card__image {
+        @extend .locked;
+      }
+    }
   }
 
   &-navigation {
@@ -220,6 +226,20 @@
         background: $white;
         cursor: pointer;
         border-radius: 7px;
+      }
+    }
+  }
+  &.disabled {
+    .cryo-swiper-navigation {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .swiper-slide {
+      opacity: 0;
+
+      &-active {
+        opacity: 1;
       }
     }
   }

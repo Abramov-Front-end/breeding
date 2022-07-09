@@ -5,6 +5,7 @@
   overflow: hidden;
   min-width: 320px;
   background: #0b0b15;
+
   &:before, &:after {
     content: '';
     display: block;
@@ -51,7 +52,7 @@
 }
 
 #bgVideo {
-  height: 100%;
+  width: 100%;
   min-width: 100%;
   min-height: 100%;
   position: fixed;
