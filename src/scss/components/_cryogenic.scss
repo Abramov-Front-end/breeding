@@ -108,6 +108,10 @@
       position: absolute;
       bottom: 156px;
       z-index: 3;
+
+      &.finished-animation {
+        display: none;
+      }
     }
     .splash {
       display: none;
@@ -130,10 +134,11 @@
     }
     .potion {
       display: none;
-      padding: 6px;
+      padding: 2px 6px;
       border-radius: $border-radius;
       position: absolute;
       bottom: 26px;
+      z-index: 2;
 
       &__img {
         display: flex;
@@ -149,6 +154,27 @@
           display: block;
           width: 100%;
           height: 100%;
+        }
+      }
+
+      &__title {
+        @extend .box;
+        display: none;
+        border-radius: $border-radius;
+        padding: 2px 6px;
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        bottom: -50%;
+
+        b {
+          display: block;
+          font-weight: $font-weight_regular;
+        }
+      }
+      &:hover {
+        .potion__title {
+          display: block;
         }
       }
     }
@@ -183,6 +209,10 @@
   &.embrion-start {
     .embrion {
       display: block;
+
+      &.finished-animation {
+        display: none;
+      }
     }
 
     &.on {
@@ -239,6 +269,10 @@
       &_green {
         display: none;
       }
+
+      &.finished-animation {
+        display: none;
+      }
     }
     .breeding-timer {
       display: flex;
@@ -270,6 +304,9 @@
     .tube {
       &_red {
         display: none;
+        &.finished-animation {
+          display: none;
+        }
       }
       &_green {
         display: block;
@@ -296,6 +333,17 @@
     &.on {
       .animate_complete {
         opacity: 1;
+      }
+    }
+    &.opened {
+      .animate_complete {
+        opacity: 1;
+        transition: opacity 0s;
+      }
+      .tube {
+        &_green {
+          display: block !important;
+        }
       }
     }
   }
@@ -371,6 +419,28 @@
 
     &.show {
       display: flex;
+    }
+  }
+
+  &.opened {
+    .embrion {
+      display: none;
+
+      &.finished-animation {
+        display: block;
+      }
+    }
+    &.in-progress {
+      .tube {
+        display: none;
+
+        &.finished-animation {
+          display: block;
+        }
+      }
+      .robot-hand {
+        transition: opacity 0s 0s;
+      }
     }
   }
 }

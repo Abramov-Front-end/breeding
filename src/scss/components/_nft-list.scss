@@ -170,8 +170,36 @@
 
     &.finished {
       .nft-item__progress-bar__handler {
+        width: 100% !important;
         background: $gradient-progress;
       }
+    }
+  }
+  &__title {
+    @extend .box;
+    display: none;
+    border-radius: $border-radius;
+    padding: 2px 6px;
+    white-space: nowrap;
+    position: absolute !important;
+    left: 50%;
+    top: 0;
+
+    b {
+      display: block;
+      font-weight: $font-weight_regular;
+    }
+  }
+  &:hover {
+    z-index: 2;
+
+    .nft-item__title {
+      display: block;
+    }
+  }
+  &.locked {
+    .nft-item__title {
+      display: none !important;
     }
   }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>BREEDING</title>
-    <link rel="stylesheet" href="css/main.css?v06">
+    <link rel="stylesheet" href="css/main.css?v07">
 </head>
 <body>
 <div class="site-wrap">
@@ -192,7 +192,7 @@
                     <div class="cryo-swiper">
                         <div class="swiper-wrapper">
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0001">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -209,7 +209,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big locked-slide">
+                            <div class="swiper-slide box nft-card nft-card_big locked-slide" data-id="0002">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0003">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0004">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -260,7 +260,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0005">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -277,7 +277,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0006">
                                 <div class="nft-card__image">
                                     <img src="images/temp/father_big1.png" alt="">
                                 </div>
@@ -317,6 +317,7 @@
                             <img src="images/animation/creo_camera_step_3.svg" alt="" class="creo-camera__img animate_step_2">
                             <object data="images/animation/creo_camera_step_3.svg" type="image/svg+xml" class="creo-camera__img animate_step_2"></object>
                             <object data="images/animation/creo_camera_completed.svg" type="image/svg+xml" class="creo-camera__img animate_complete"></object>
+                            <img src="images/animation/embrion_finished.svg" class="embrion finished-animation" />
                             <object data="images/animation/embrion.svg" type="image/svg+xml" class="embrion"></object>
                             <object data="images/animation/splash_01.svg" type="image/svg+xml" class="splash splash_1"></object>
                             <object data="images/animation/splash_02.svg" type="image/svg+xml" class="splash splash_2"></object>
@@ -326,17 +327,20 @@
                             <div class="box potion">
                                 <div class="potion__img">
                                     <img src="images/potion.png" alt="">
+                                    <span class="potion__title">Love Potion <b>#</b></span>
                                 </div>
                             </div>
-                            <div class="breeding-timer">00:00</div>
+                            <div class="breeding-timer">:</div>
                             <div class="plate not-ready-for-breeding show">Click on love potion to activate breeding</div>
                             <div class="plate not-ready-parent">Please choose unlocked parent to preceed breeding</div>
                             <div class="plate ready-for-breeding">Click on Cryogenic Camera to initiate breeding</div>
                         </div>
+                        <img src="images/animation/tube_finished.svg" class="tube tube_left tube_red finished-animation" />
                         <object data="images/animation/tube.svg" type="image/svg+xml" class="tube tube_left tube_red"></object>
+                        <img src="images/animation/tube_finished.svg" class="tube tube_right tube_red finished-animation" />
                         <object data="images/animation/tube.svg" type="image/svg+xml" class="tube tube_right tube_red"></object>
-                        <object data="images/animation/tube_green.svg" type="image/svg+xml" class="tube tube_left tube_green"></object>
-                        <object data="images/animation/tube_green.svg" type="image/svg+xml" class="tube tube_right tube_green"></object>
+                        <img src="images/animation/tube_green.svg" class="tube tube_left tube_green" />
+                        <img src="images/animation/tube_green.svg" class="tube tube_right tube_green" />
                     </div>
                     <div class="breeding-controls">
                         <div class="reveal-block">
@@ -353,35 +357,45 @@
                                 </div>
                                 <div class="swiper-wrapper">
                                     <!-- Slide -->
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0001">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0001</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0002">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0002</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0003">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0003</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0004">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0004</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0005">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0005</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0006">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0006</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0007">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0007</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0008">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0008</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0009">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0009</b></span>
                                     </div>
-                                    <div class="swiper-slide nft-item">
+                                    <div class="swiper-slide nft-item" data-id="0010">
                                         <img src="images/potion.png" alt="" class="nft-item__img">
+                                        <span class="nft-item__title">Love Potion <b>#0010</b></span>
                                     </div>
                                     <!-- Slide -->
                                 </div>
@@ -403,7 +417,7 @@
                     <div class="cryo-swiper">
                         <div class="swiper-wrapper">
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0001">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -420,7 +434,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0002">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -437,7 +451,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0003">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -454,7 +468,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0004">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -471,7 +485,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0005">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -488,7 +502,7 @@
                                 </div>
                             </div>
                             <!-- Slide -->
-                            <div class="swiper-slide box nft-card nft-card_big">
+                            <div class="swiper-slide box nft-card nft-card_big" data-id="0006">
                                 <div class="nft-card__image">
                                     <img src="images/temp/mother_big1.png" alt="">
                                 </div>
@@ -523,29 +537,28 @@
         <div class="footer__inner">
             <h2 class="footer__title">My Breedings:</h2>
             <div class="box">
-                <div class="swiper-overflow big">
+                <div class="swiper-overflow slider-my-breeding" id="myBreedingSlider">
                     <div class="swiper">
                         <div class="swiper-button-prev">
                             <img src="images/arrow-l-b.svg" alt="">
                         </div>
                         <div class="swiper-wrapper">
                             <!-- Slide -->
-                            <div class="swiper-slide nft-item">
-                                <div class="nft-item__indicator nft-item__timer">03:21</div>
-                                <img src="images/new-nft.svg" alt="" class="nft-item__img">
-                                <div class="nft-item__progress-bar">
-                                    <div class="nft-item__progress-bar__handler" style="width: 35%"></div>
-                                </div>
-                            </div>
+<!--                            <div class="swiper-slide nft-item">-->
+<!--                                <div class="nft-item__indicator nft-item__timer">03:21</div>-->
+<!--                                <img src="images/new-nft.svg" alt="" class="nft-item__img">-->
+<!--                                <div class="nft-item__progress-bar">-->
+<!--                                    <div class="nft-item__progress-bar__handler" style="width: 35%"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <!-- Slide -->
-                            <div class="swiper-slide nft-item">
-                                <div class="nft-item__indicator nft-item__repack">Reveal Now!</div>
-                                <img src="images/new-nft.svg" alt="" class="nft-item__img">
-                                <div class="nft-item__progress-bar finished">
-                                    <div class="nft-item__progress-bar__handler" style="width: 100%"></div>
-                                </div>
-                            </div>
-
+<!--                            <div class="swiper-slide nft-item">-->
+<!--                                <div class="nft-item__indicator nft-item__repack">Reveal Now!</div>-->
+<!--                                <img src="images/new-nft.svg" alt="" class="nft-item__img">-->
+<!--                                <div class="nft-item__progress-bar finished">-->
+<!--                                    <div class="nft-item__progress-bar__handler" style="width: 100%"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                         <div class="swiper-button-next">
                             <img src="images/arrow-r-b.svg" alt="">
@@ -565,6 +578,6 @@
     <source src="video/background_video_1.webm" type="video/webm">
 </video>
 <script src="js/swiper.min.js"></script>
-<script src="js/script.js?v03"></script>
+<script src="js/script.js?v04"></script>
 </body>
 </html>
