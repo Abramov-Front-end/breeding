@@ -137,6 +137,7 @@
         &:checked + label {
           background: $gradient-primary;
           color: $white;
+
         }
       }
     }
@@ -151,15 +152,18 @@
         margin-right: 12px;
 
         label {
-          min-width: 130px;
+          min-width: 120px;
           background: $grey_light;
           font-size: $font-size-sm;
+          border-radius: $border-radius-md;
           color: $color_text;
           justify-content: center;
         }
       }
       .checkbox {
         height: 36px;
+        margin-right: 12px;
+        margin-bottom: 12px;
 
         label {
           display: flex;

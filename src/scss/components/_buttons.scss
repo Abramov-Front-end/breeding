@@ -69,8 +69,13 @@
     &_tab {
       background: $grey_light;
       color: $color_text;
-      border-radius: $border-radius-md;
       height: 36px;
+      border-radius: $border-radius-md !important;
+
+      &_babies {
+        background: $gradient-secondary !important;
+        color: $color_text !important;
+      }
     }
 
     &_use {

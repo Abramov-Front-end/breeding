@@ -90,6 +90,11 @@
 
         &:last-child {
           margin-right: 0;
+
+          .nft-item__title {
+            right: 90%;
+            left: auto;
+          }
         }
       }
 

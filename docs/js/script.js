@@ -17,22 +17,35 @@ let breedingState = {
 //Wallet
 const walletBlock = document.getElementById('WalletBlock')
 
+function Wallet(btnOpen, btnClose) {
+
+}
+Wallet.prototype.open = function(){
+    walletBlock.classList.add('open')
+    setTimeout(function(){
+        walletBlock.classList.add('on')
+    }, 100)
+}
+Wallet.prototype.close = function(){
+    walletBlock.classList.remove('on')
+    setTimeout(function(){
+        walletBlock.classList.remove('open')
+    }, 100)
+}
+const wallet = new Wallet()
 walletBlock.addEventListener('click', function(e){
     const target = e.target
 
     if ( target.closest('#WalletDropdownBtn') ) {
 
-        walletBlock.classList.add('open')
-        setTimeout(function(){
-            walletBlock.classList.add('on')
-        }, 100)
+        if ( target.closest('.open') ) {
+            wallet.close()
+        } else {
+            wallet.open()
+        }
 
     } else if ( target.closest('#WalletDropdownCloseBtn') ) {
-
-        walletBlock.classList.remove('on')
-        setTimeout(function(){
-            walletBlock.classList.remove('open')
-        }, 100)
+        wallet.close()
     }
 
 })
@@ -233,16 +246,19 @@ Breeding.prototype.open = function(data) {
 
     if ( breedingState.step === 'in-progress' ) {
         this.sounds.robot.play()
-    } else {
+    }
+    if ( breedingState.step === 'completed' ) {
         this.sounds.complete.play()
     }
 
-    const potionTitle = this.cryogenicEl.querySelector('.potion .potion__title b')
-    potionTitle.innerHTML = '#' + breedingState.potion
+    if ( breedingState.step !== 'reveal' ) {
+        const potionTitle = this.cryogenicEl.querySelector('.potion .potion__title b')
+        potionTitle.innerHTML = '#' + breedingState.potion
 
-    const timerEl = creoCamera.querySelector('.breeding-timer')
-    this.timer = new Timer(timerEl, breedingState.datestart)
-    this.timer.start(this.finish.bind(this, true))
+        const timerEl = creoCamera.querySelector('.breeding-timer')
+        this.timer = new Timer(timerEl, breedingState.datestart)
+        this.timer.start(this.finish.bind(this, true))
+    }
 }
 Breeding.prototype.reveal = function(id) {
 
@@ -250,11 +266,7 @@ Breeding.prototype.reveal = function(id) {
     this.cryogenicEl.className = 'cryogenic reveal'
     this.cryogenicEl.querySelector('.reveal-results__title span').innerHTML = breedingState.potion
 
-    const slide = sliders.nft.findSlideById(id)
-    // console.log(slide);
-    // console.dir(slide);
-    // slide.querySelector('.nft-item__indicator').remove()
-    // slide.querySelector('.nft-item__progress-bar').remove()
+    sliders.nft.changeSlideImg(id, 'images/temp/baby1.png')
 
     this.timeoutFunc(function(){
         this.cryogenicEl.classList.add('on')
@@ -338,15 +350,15 @@ const sliders = {
                 )
             })
         },
-        findSlideById: function(id) {
-            let slideIndex = null
-            for ( let slide in this.array[1].slides ) {
-                if ( this.array[1].slides[slide].dataset.babyid === id ) {
-                    slideIndex = slide
-                    break
-                }
-            }
-            return this.array[1].slides[slideIndex]
+        changeSlideImg: function(id, image) {
+
+            let slide = this.array[1].slides.filter(e => {
+                return e.dataset.babyid == id
+            })
+            slide[0].dataset.step = 'reveal'
+            slide[0].querySelector('.nft-item__indicator').remove()
+            slide[0].querySelector('.nft-item__progress-bar').remove()
+            slide[0].querySelector('.nft-item__img').src = image
         },
         checkEmpty: function(swiper) {
             const swiperOverflow = swiper.$el.closest('.swiper-overflow')[0]
@@ -486,7 +498,6 @@ cryogenicEl.addEventListener('click', function(e) {
     if ( !breedingState.status ) return false
     if ( e.target.closest('#creoCamera') ) breeding.start()
 })
-
 potionsSlider.addEventListener('click', function(e) {
     const potion = e.target.closest('.swiper-slide')
 
@@ -507,6 +518,5 @@ breedingNew.addEventListener('click', function(e){
 })
 revealNow.addEventListener('click', function(e){
     e.preventDefault()
-
     breeding.reveal(breedingState.babyid)
 })
