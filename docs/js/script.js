@@ -244,6 +244,23 @@ Breeding.prototype.open = function(data) {
     this.timer = new Timer(timerEl, breedingState.datestart)
     this.timer.start(this.finish.bind(this, true))
 }
+Breeding.prototype.reveal = function(id) {
+
+    breedingState.step = 'reveal'
+    this.cryogenicEl.className = 'cryogenic reveal'
+    this.cryogenicEl.querySelector('.reveal-results__title span').innerHTML = breedingState.potion
+
+    const slide = sliders.nft.findSlideById(id)
+    // console.log(slide);
+    // console.dir(slide);
+    // slide.querySelector('.nft-item__indicator').remove()
+    // slide.querySelector('.nft-item__progress-bar').remove()
+
+    this.timeoutFunc(function(){
+        this.cryogenicEl.classList.add('on')
+        this.sounds.reveal.play()
+    }, 300)
+}
 Breeding.prototype.checkReady = function() {
 
     const plateNotReady = this.cryogenicEl.querySelector('.plate.not-ready-for-breeding')
@@ -320,6 +337,16 @@ const sliders = {
                     })
                 )
             })
+        },
+        findSlideById: function(id) {
+            let slideIndex = null
+            for ( let slide in this.array[1].slides ) {
+                if ( this.array[1].slides[slide].dataset.babyid === id ) {
+                    slideIndex = slide
+                    break
+                }
+            }
+            return this.array[1].slides[slideIndex]
         },
         checkEmpty: function(swiper) {
             const swiperOverflow = swiper.$el.closest('.swiper-overflow')[0]
@@ -472,10 +499,14 @@ potionsSlider.addEventListener('click', function(e) {
 })
 myBreedingSlider.addEventListener('click', function(e) {
     const myBreeding = e.target.closest('.swiper-slide')
-
     breeding.open(myBreeding.dataset)
 })
 breedingNew.addEventListener('click', function(e){
     e.preventDefault()
     breeding.reload()
+})
+revealNow.addEventListener('click', function(e){
+    e.preventDefault()
+
+    breeding.reveal(breedingState.babyid)
 })
