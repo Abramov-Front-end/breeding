@@ -1,6 +1,9 @@
 .header {
   padding: 20px 0;
 
+  @media (max-width: $sm) {
+    padding: 38px 0 16px;
+  }
   &__inner {
     justify-content: space-between;
     align-items: center;
@@ -10,11 +13,19 @@
     height: 58px;
     align-items: center;
 
+    @media (max-width: $sm) {
+      height: 46px;
+    }
+
     &_img {
       display: block;
       margin-right: 10px;
       width: auto;
       height: 100%;
+
+      @media (max-width: $sm) {
+        margin-right: 7px;
+      }
     }
 
     &_text {
@@ -23,6 +34,11 @@
       color: $red;
       line-height: 27px;
 
+      @media (max-width: $sm) {
+        font-size: $font-size;
+        line-height: 1.5;
+      }
+
       b {
         margin-top: -10px;
         display: block;
@@ -30,6 +46,12 @@
         font-weight: $font-weight_black;
         color: $white;
         line-height: 39px;
+
+        @media (max-width: $sm) {
+          margin-top: -6px;
+          font-size: 20px;
+          line-height: 1.5;
+        }
       }
     }
   }

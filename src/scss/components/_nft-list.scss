@@ -76,12 +76,21 @@
     border-radius: $border-radius-bg;
     padding: 26px 26px 18px;
 
+    @media (max-width: $lg) {
+      width: 280px;
+      padding: 18px 18px 12px;
+    }
+
     .nft-card {
       &__image {
         margin-bottom: 19px;
         width: 329px;
         overflow: hidden;
         border-radius: $border-radius;
+
+        @media (max-width: $lg) {
+          width: 244px;
+        }
 
         img {
           display: block;

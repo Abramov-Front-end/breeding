@@ -189,6 +189,18 @@
     transition-property: transform, opacity;
     opacity: 0;
 
+
+    &-prev {
+      @media (max-width: $lg) {
+        transform: translate3d(140px, 0, 0) scale(0.65) !important;
+      }
+    }
+    &-next {
+      @media (max-width: $lg) {
+        transform: translate3d(-140px, 0, 0) scale(0.65) !important;
+      }
+    }
+
     &-prev,
     &-next {
       opacity: 0.46;
@@ -211,6 +223,7 @@
 
     .swiper-button {
       flex: 0 0 auto;
+      height: 29px;
       cursor: pointer;
 
       &-prev {

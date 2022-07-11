@@ -10,6 +10,11 @@
   position: relative;
   z-index: 2;
 
+  @media (max-width: $lg) {
+    min-width: 190px;
+    padding: 0 25px;
+  }
+
   &-wrapper {
     display: flex;
   }
@@ -18,6 +23,11 @@
     flex: 0 0 385px;
     padding-top: 10px;
     width: 385px;
+
+    @media (max-width: $lg) {
+      flex: 0 0 280px;
+      width: 280px;
+    }
 
     &__title {
       margin-bottom: 16px;
@@ -33,27 +43,34 @@
   .creo-camera {
     display: flex;
     justify-content: center;
-    padding-bottom: 26px;
+    padding-bottom: 201.5%;
     width: 268px;
-    height: 540px;
     max-width: 100%;
     position: relative;
     cursor: pointer;
+
+    @media (max-width: $lg) {
+      width: 220px;
+    }
 
     .breeding-timer {
       display: none;
       justify-content: center;
       align-items: center;
-      width: 106px;
-      height: 40px;
-      background: url(../images/creo-camera-timer.svg) no-repeat;
+      width: 39.55%;
+      height: 7.4%;
+      background: url(../images/creo-camera-timer.svg) center center/100% 100% no-repeat;
       font-size: $font-size-md;
       letter-spacing: 0.02em;
       text-shadow: 0 4px 4px rgba($black, 0.25);
       color: $white;
       position: absolute;
-      top: 40px;
+      top: 7.4%;
       z-index: 5;
+
+      @media (max-width: $lg) {
+        font-style: $font-size-sm;
+      }
     }
 
     object {
@@ -78,9 +95,9 @@
     }
 
     .robot-hand {
-      width: 250px;
+      width: 93.28%;
       position: absolute;
-      top: 36px;
+      top: 6.66%;
       z-index: 5;
       opacity: 0;
       pointer-events: none;
@@ -89,24 +106,24 @@
         max-width: 100%;
       }
       &_left {
-        right: -102px;
-        width: 258px;
+        right: -38.05%;
+        width: 96.26%;
       }
       &_right {
-        left: -102px;
+        left: -38.05%;
       }
     }
 
     .embrion {
       display: none;
-      width: 146px;
+      width: 54.47%;
       height: auto;
       transform-origin: 50% 50%;
-      transform: translateY(140px) rotate(-45deg);
+      transform: translateY(64%) rotate(-45deg);
       opacity: 0;
       transition: all 4s;
       position: absolute;
-      bottom: 156px;
+      bottom: 28.88%;
       z-index: 3;
 
       &.finished-animation {
@@ -115,26 +132,32 @@
     }
     .potion {
       display: none;
-      padding: 2px 6px;
+      padding: 4px 6px;
       border-radius: $border-radius;
       position: absolute;
-      bottom: 26px;
+      bottom: 4.81%;
       z-index: 2;
+
+      @media (max-width: $lg) {
+        padding: 6px;
+        width: 65px;
+        height: 65px;
+      }
 
       &__img {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60px;
-        height: 60px;
+        width: 100%;
+        height: 100%;
         background: #01122A;
         border-radius: $border-radius;
         overflow: hidden;
 
         img {
           display: block;
-          width: 100%;
-          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
 
@@ -167,16 +190,18 @@
     z-index: 4;
 
     &_1 {
-      transform: translateX(-30px);
-      bottom: 30px;
+      width: 100%;
+      transform: translateX(-11.19%);
+      bottom: 5.55%;
     }
 
     &_2 {
-      bottom: 120px;
+      width: 100%;
+      bottom: 22.22%;
     }
     &_3, &_complete {
       width: 150%;
-      bottom: 65px;
+      bottom: 12.03%;
     }
     &_4 {
       width: 100%;
@@ -188,6 +213,11 @@
     position: absolute;
     bottom: 130px;
     z-index: -1;
+
+    @media (max-width: $lg) {
+      height: 30px;
+      bottom: 118px;
+    }
 
     &_left {
       left: 0;
@@ -330,6 +360,10 @@
         overflow: visible;
         width: 239px;
         opacity: 1;
+
+        @media (max-width: $lg) {
+          width: 170px;
+        }
       }
     }
     .breeding-timer {
@@ -352,17 +386,22 @@
       }
     }
   }
-
   .potions-list {
     width: 100%;
     border-radius: $border-radius-md;
   }
   .breeding-controls {
     display: none;
-    margin-top: -26px;
+    margin-top: 3px;
     padding: 18px 0 40px;
     height: 104px;
     text-transform: uppercase;
+
+    @media (max-width: $lg) {
+      margin-top: 3px;
+      padding: 0 0 28px;
+      height: 66px;
+    }
 
     .reveal-block {
       display: flex;
@@ -374,6 +413,10 @@
 
       .reveal-now {
         padding: 0 32px;
+
+        @media (max-width: $lg) {
+          padding: 0 11px;
+        }
       }
 
       span {
@@ -382,12 +425,22 @@
         font-size: $font-size-md;
         font-weight: $font-weight_light;
         color: $white;
+
+        @media (max-width: $lg) {
+          margin: 0 13px;
+          font-size: $font-size;
+        }
       }
     }
 
     .breeding-new {
       min-width: 284px;
       position: relative;
+
+      @media (max-width: $lg) {
+        padding: 0 11px;
+        min-width: auto;
+      }
     }
   }
   .plate {

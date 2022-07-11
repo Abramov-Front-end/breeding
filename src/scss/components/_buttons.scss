@@ -16,12 +16,16 @@
   }
 
   &_size {
-
     &_big {
       height: 46px;
       border-radius: $border-radius-bg;
       font-size: $font-size-md;
       font-weight: $font-weight_medium;
+
+      @media (max-width: $lg) {
+        height: 38px;
+        font-size: $font-size-sm;
+      }
     }
     &_medium {
       height: 38px;
@@ -30,7 +34,6 @@
   }
 
   &_color {
-
     &_primary {
       background: $gradient-primary;
       color: $white;
@@ -62,7 +65,6 @@
       background: $white;
       box-shadow: $bs_btn_primary;
     }
-
   }
 
   &_type {

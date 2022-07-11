@@ -308,6 +308,9 @@ const breeding = new Breeding()
 
 //Swipers
 const sliders = {
+    windowSize: function() {
+
+    },
     scroll: {
         init: function() {
             new Swiper('.swiper-scroll', {
@@ -430,7 +433,7 @@ const sliders = {
                         coverflowEffect: {
                             rotate: 0,
                             scale: 0.65,
-                            stretch: 192
+                            stretch: 192,
                         },
                         on: {
                             slideChange: function() {
