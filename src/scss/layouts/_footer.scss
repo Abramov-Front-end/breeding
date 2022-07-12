@@ -1,4 +1,8 @@
 .footer {
+  @media (max-width: $sm) {
+    display: none;
+  }
+
   &__inner {
     flex-direction: column;
     padding-bottom: 70px;

@@ -1,6 +1,10 @@
 .nft-list {
   padding-right: 22px;
 
+  @media (max-width: $md) {
+    padding-right: 0;
+  }
+
   &__card {
     display: flex;
     margin-bottom: 12px;
@@ -15,6 +19,10 @@
       margin-bottom: 0;
     }
 
+    @media (max-width: $md) {
+      padding: 11px 14px 11px 9px;
+    }
+
     &__img {
       display: flex;
       justify-content: center;
@@ -25,6 +33,16 @@
       overflow: hidden;
       background: #01122A;
       border-radius: $border-radius;
+
+      @media (max-width: $md) {
+        margin-right: 10px;
+        width: 74px;
+        height: 86px;
+
+        img {
+          max-height: 100%;
+        }
+      }
     }
 
     &__description {
@@ -36,10 +54,19 @@
 
         &__title {
           font-size: $font-size-sm;
+
+          @media (max-width: $md) {
+            font-size: $font-size;
+          }
         }
 
         &__rank {
           margin-top: 13px;
+
+          @media (max-width: $md) {
+            margin-top: 7px;
+            font-size: 12px;
+          }
         }
       }
     }
@@ -81,6 +108,11 @@
       padding: 18px 18px 12px;
     }
 
+    @media (max-width: $md) {
+      width: 220px;
+      padding: 12px 12px 8px;
+    }
+
     .nft-card {
       &__image {
         margin-bottom: 19px;
@@ -89,7 +121,17 @@
         border-radius: $border-radius;
 
         @media (max-width: $lg) {
-          width: 244px;
+          width: 240px;
+        }
+
+        @media (max-width: $md) {
+          margin-bottom: 12px;
+          width: 192px;
+        }
+
+        @media (max-width: $sm) {
+          margin-bottom: 4px;
+          width: 162px;
         }
 
         img {
@@ -101,6 +143,16 @@
       &__title {
         margin-bottom: 14px;
         font-size: $font-size-md;
+
+        @media (max-width: $sm) {
+          margin-bottom: 4px;
+          font-size: $font-size;
+        }
+      }
+      &__rank {
+        @media (max-width: $sm) {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -144,6 +196,13 @@
     position: absolute;
     text-align: center;
     top: -11px;
+
+    @media (max-width: $md) {
+      height: 18px;
+      line-height: 19px;
+      font-size: 10px;
+      top: -9px;
+    }
   }
 
   &__timer {
@@ -154,6 +213,11 @@
   &__repack {
     width: 109px;
     background: $gradient-progress;
+
+    @media (max-width: $md) {
+      padding: 0 10px;
+      width: auto;
+    }
   }
 
   &__img {
@@ -171,6 +235,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
+
+    @media (max-width: $md) {
+      height: 8px;
+    }
 
     &__handler {
       height: 100%;

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=440px, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>BREEDING</title>
-    <link rel="stylesheet" href="css/main.css?v10">
+    <link rel="stylesheet" href="css/main.css?v11">
 </head>
 <body>
 <div class="site-wrap">
@@ -26,7 +26,9 @@
                     </button>
                     <div class="wallet-block__dropdown__list">
                         <div class="wallet-block__search">
-                            <input type="text" class="wallet-block__search__input" placeholder="Search NFTs">
+                            <div class="wallet-block__search__wrapper">
+                                <input type="text" class="wallet-block__search__input" placeholder="Search NFTs">
+                            </div>
                             <div class="wallet-block__search__sort">
                                 <div class="radio">
                                     <input checked type="radio" name="sortby" id="SortByRaeity">
@@ -81,7 +83,7 @@
                                 <li class="radio">
                                     <input checked type="radio" name="filter" id="TabBabies">
                                     <label class="btn btn_size_medium btn_type_tab btn_type_tab_babies wallet-block__radio" for="TabBabies">
-                                        Babies
+                                        My Babies
                                     </label>
                                 </li>
                             </ul>
@@ -109,7 +111,7 @@
                                             </div>
                                         </div>
                                         <div class="nft-list__card__buttons">
-                                            <a href="#" class="btn btn_type_use btn_type_use_male">USE AS MALE</a>
+                                            <a href="#" class="btn btn_type_use btn_type_use_male">USE <span>AS MALE</span></a>
                                             <a href="#" class="btn btn_crypto">
                                                 View on <img src="images/crypto.com.png" alt="Crypto.com">
                                             </a>
@@ -138,7 +140,7 @@
                                             </div>
                                         </div>
                                         <div class="nft-list__card__buttons">
-                                            <a href="#" class="btn btn_type_use btn_type_use_female">Use as FEMale</a>
+                                            <a href="#" class="btn btn_type_use btn_type_use_female">Use <span>as FEMale</span></a>
                                             <a href="#" class="btn btn_crypto">
                                                 View on <img src="images/crypto.com.png" alt="Crypto.com">
                                             </a>
@@ -340,6 +342,10 @@
                         <object data="images/animation/tube.svg" type="image/svg+xml" class="tube tube_right tube_red"></object>
                         <img src="images/animation/tube_green.svg" class="tube tube_left tube_green" />
                         <img src="images/animation/tube_green.svg" class="tube tube_right tube_green" />
+                        <object data="images/animation/tube_mobile.svg" type="image/svg+xml" class="tube tube_left tube_red mobile"></object>
+                        <object data="images/animation/tube_mobile.svg" type="image/svg+xml" class="tube tube_right tube_red mobile"></object>
+                        <object data="images/animation/tube_mobile_green.svg" type="image/svg+xml" class="tube tube_left tube_green mobile"></object>
+                        <object data="images/animation/tube_mobile_green.svg" type="image/svg+xml" class="tube tube_right tube_green mobile"></object>
                     </div>
                     <div class="breeding-controls">
                         <div class="reveal-block">
@@ -586,6 +592,6 @@
     <source src="video/background_video_1.webm" type="video/webm">
 </video>
 <script src="js/swiper.min.js"></script>
-<script src="js/script.js?v07"></script>
+<script src="js/script.js?v08"></script>
 </body>
 </html>

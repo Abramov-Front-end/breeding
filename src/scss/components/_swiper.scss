@@ -12,12 +12,23 @@
       line-height: 1.1;
       text-transform: uppercase;
       letter-spacing: 0.06em;
+
+      @media (max-width: $md) {
+        display: block;
+        margin-bottom: 7px;
+        font-size: $font-size;
+      }
     }
   }
 
   &.slider-my-breeding {
     padding: 0 54px 28px;
     height: 165px;
+
+    @media (max-width: $md) {
+      height: 130px;
+      padding: 0 40px 18px;
+    }
 
     .swiper-slide {
       display: flex;
@@ -26,6 +37,12 @@
       height: 120px;
       position: relative;
 
+      @media (max-width: $md) {
+        margin-right: 14px;
+        width: 90px;
+        height: 90px;
+      }
+
       &:last-child {
         margin-right: 0;
       }
@@ -33,12 +50,25 @@
 
     .swiper-button-prev {
       left: 16px;
+
+      @media (max-width: $md) {
+        left: 10px;
+      }
     }
 
     .swiper-button-next {
       right: 16px;
-    }
 
+      @media (max-width: $md) {
+        right: 10px;
+      }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      img {
+        width: 14px;
+      }
+    }
     .swiper-scrollbar {
       height: 6px;
       background: rgba(198, 198, 198, 0.36);
@@ -47,6 +77,11 @@
       left: 22px;
       right: 22px;
       bottom: 8px;
+
+      @media (max-width: $md) {
+        height: 4px;
+        bottom: 6px;
+      }
 
       &-drag {
         height: 100%;
@@ -64,9 +99,14 @@
   }
 
   &.slider-potions {
+    padding: 6px 28px 8px;
     width: 100%;
     height: 74px;
-    padding: 6px 28px 8px;
+
+    @media (max-width: $md) {
+      padding: 8px 27px 9px;
+      height: 67px;
+    }
 
     .swiper {
       padding-top: 0;
@@ -82,10 +122,21 @@
         position: relative;
         background: #01122A;
 
+        @media (max-width: $md) {
+          margin-right: 6px;
+          width: 51px;
+          height: 51px;
+        }
+
         img {
           display: block;
           width: 58px;
           height: 59px;
+
+          @media (max-width: $md) {
+            width: 100%;
+            height: 100%;
+          }
         }
 
         &:last-child {
@@ -139,6 +190,10 @@
     overflow: hidden;
     padding-top: 17px;
 
+    @media (max-width: $md) {
+      padding-top: 12px;
+    }
+
     &-wrapper {
       display: flex;
     }
@@ -158,6 +213,10 @@
 
   &.empty {
     padding: 10px;
+
+    @media (max-width: $md) {
+      padding: 8px;
+    }
 
     .swiper {
       display: flex;
@@ -182,6 +241,10 @@
   .swiper-wrapper {
     display: flex;
     margin-bottom: 24px;
+
+    @media (max-width: $sm) {
+      margin-bottom: 0;
+    }
   }
 
   .swiper-slide {
@@ -189,15 +252,26 @@
     transition-property: transform, opacity;
     opacity: 0;
 
-
     &-prev {
       @media (max-width: $lg) {
         transform: translate3d(140px, 0, 0) scale(0.65) !important;
+      }
+      @media (max-width: $md) {
+        transform: translate3d(110px, 0, 0) scale(0.65) !important;
+      }
+      @media (max-width: $sm) {
+        opacity: 0 !important;
       }
     }
     &-next {
       @media (max-width: $lg) {
         transform: translate3d(-140px, 0, 0) scale(0.65) !important;
+      }
+      @media (max-width: $md) {
+        transform: translate3d(-110px, 0, 0) scale(0.65) !important;
+      }
+      @media (max-width: $sm) {
+        opacity: 0 !important;
       }
     }
 
@@ -221,16 +295,36 @@
     display: flex;
     align-items: center;
 
+    @media (max-width: $sm) {
+      display: none;
+    }
+
     .swiper-button {
       flex: 0 0 auto;
       height: 29px;
       cursor: pointer;
 
+      @media (max-width: $md) {
+        height: 22px;
+
+        img {
+          height: 100%;
+        }
+      }
+
       &-prev {
         margin-right: 18px;
+
+        @media (max-width: $md) {
+          margin-right: 8px;
+        }
       }
       &-next {
         margin-left: 18px;
+
+        @media (max-width: $md) {
+          margin-left: 8px;
+        }
       }
     }
     .swiper-scrollbar {
@@ -238,6 +332,10 @@
       height: 14px;
       background: rgba($white, 0.46);
       border-radius: 7px;
+
+      @media (max-width: $md) {
+        height: 8px;
+      }
 
       &-drag {
         height: 100%;

@@ -53,6 +53,11 @@
   @media (max-width: $lg) {
     max-width: 1200px;
   }
+
+  @media (max-width: $md) {
+    max-width: 940px;
+    padding: 0 16px;
+  }
 }
 
 #bgVideo {

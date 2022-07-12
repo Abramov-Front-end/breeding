@@ -13,6 +13,11 @@
     padding: 0;
     width: 46px;
     justify-content: center;
+
+    @media (max-width: $md) {
+      width: 41px;
+      height: 41px !important;
+    }
   }
 
   &_size {
@@ -22,7 +27,7 @@
       font-size: $font-size-md;
       font-weight: $font-weight_medium;
 
-      @media (max-width: $lg) {
+      @media (max-width: $md) {
         height: 38px;
         font-size: $font-size-sm;
       }
@@ -91,6 +96,25 @@
       font-weight: $font-weight_medium;
       text-transform: uppercase;
 
+      span {
+        display: inline-flex;
+        margin-left: 4px;
+      }
+      @media (max-width: $md) {
+        flex-direction: column;
+        margin-bottom: 7px;
+        width: 106px;
+        height: 42px;
+        font-size: 13px;
+        line-height: 12px;
+
+        span {
+          display: block;
+          margin-top: 4px;
+          margin-left: 0;
+        }
+      }
+
       &_male {
         border-color: $blue;
         color: $blue;
@@ -124,6 +148,14 @@
     font-size: $font-size;
     white-space: normal;
 
+    @media (max-width: $md) {
+      padding: 1px 5px 2px;
+      flex-direction: column;
+      width: 106px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
     &:hover {
       background: #683AFD;
     }
@@ -132,6 +164,12 @@
       display: block;
       margin-left: 4px;
       height: 23px;
+
+      @media (max-width: $md) {
+        margin-left: 0;
+        width: 96px;
+        height: auto;
+      }
     }
   }
 }
