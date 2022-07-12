@@ -3,7 +3,7 @@
   flex-flow: column nowrap;
   min-height: 100%;
   overflow: hidden;
-  min-width: 320px;
+  min-width: 375px;
   background: #0b0b15;
 
   &:before, &:after {
@@ -62,10 +62,18 @@
 
 #bgVideo {
   width: 100%;
-  min-width: 100%;
-  min-height: 100%;
+  height:100%;
+  object-fit: cover;
   position: fixed;
   right: 0;
   bottom: 0;
   pointer-events: none;
+
+  @media (max-width: $sm) {
+    width: auto;
+  }
+}
+
+.d-none {
+  display: none !important;
 }

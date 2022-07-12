@@ -59,6 +59,10 @@
   .wallet-block {
     position: relative;
 
+    @media (max-width: $sm) {
+      position: static;
+    }
+
     &__btn {
       padding: 0 12px 0 16px;
       position: relative;
@@ -85,9 +89,15 @@
       position: absolute;
       top: 0;
       right: -57px;
+      z-index: 2;
 
       @media (max-width: $xl + 120px) {
         right: 0;
+      }
+
+      @media (max-width: $sm) {
+        top: 16px;
+        right: 16px;
       }
 
       &__list {
@@ -105,8 +115,8 @@
         top: calc(100% + 14px);
         right: 0;
 
-        @media (max-width: $md) {
-          width: 402px;
+        @media (max-width: $sm) {
+          max-width: 343px;
         }
       }
     }
@@ -310,6 +320,13 @@
     &.open {
       @media (max-width: $xl + 120px) {
         padding-right: 57px;
+      }
+      @media (max-width: $sm) {
+        padding-right: 0;
+
+        .wallet-block__btn {
+          opacity: 0;
+        }
       }
 
       .wallet-block__dropdown {

@@ -13,7 +13,9 @@
         line-height: 26px;
       }
       @media (max-width: $sm) {
-        margin-bottom: 11px;
+        margin-bottom: 17px;
+        font-size: $font-size-md;
+        line-height: 20px;
       }
 
       span {

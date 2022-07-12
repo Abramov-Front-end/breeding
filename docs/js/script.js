@@ -33,7 +33,7 @@ Wallet.prototype.close = function(){
     }, 100)
 }
 const wallet = new Wallet()
-walletBlock.addEventListener('click', function(e){
+document.addEventListener('click', function(e){
     const target = e.target
 
     if ( target.closest('#WalletDropdownBtn') ) {
@@ -46,6 +46,8 @@ walletBlock.addEventListener('click', function(e){
 
     } else if ( target.closest('#WalletDropdownCloseBtn') ) {
         wallet.close()
+    } else if ( target.closest('.btn__chosen') ) {
+        wallet.open()
     }
 
 })
@@ -134,6 +136,7 @@ Breeding.prototype.start = function() {
 
     breedingState.step = 'in-progress'
     breedingState.datestart = new Date().getTime()
+    breedingState.babyid = babyid
 
     sliders.nft.appendSlide(babyid)
 
@@ -234,7 +237,7 @@ Breeding.prototype.finish = function(opened) {
     breedingState.step = 'completed'
 }
 Breeding.prototype.open = function(data) {
-
+    this.reload()
     breedingState.status = true
     breedingState = {...breedingState, ...data}
     breedingState.parents = data.parents.split(',')
@@ -266,7 +269,7 @@ Breeding.prototype.reveal = function(id) {
     this.cryogenicEl.className = 'cryogenic reveal'
     this.cryogenicEl.querySelector('.reveal-results__title span').innerHTML = breedingState.potion
 
-    sliders.nft.changeSlideImg(id, 'images/temp/baby1.png')
+    breeding.changePreview(id, 'images/temp/baby1.png')
 
     this.timeoutFunc(function(){
         this.cryogenicEl.classList.add('on')
@@ -304,16 +307,57 @@ Breeding.prototype.checkReady = function() {
 
     return breedingState.status
 }
+Breeding.prototype.preview = function(babyid) {
+    return `<div class="swiper-slide nft-item nft-preview" 
+                    data-babyid="${babyid}" 
+                    data-potion="${breedingState.potion}"
+                    data-parents="${breedingState.parents}"
+                    data-datestart="${breedingState.datestart}"
+                    data-step="in-progress">
+                    <div class="nft-item__indicator nft-item__timer">:</div>
+                    <img src="images/new-nft.svg" alt="" class="nft-item__img">
+                    <div class="nft-item__progress-bar">
+                        <div class="nft-item__progress-bar__handler" style="width: 0%"></div>
+                    </div>
+                </div>`
+}
+Breeding.prototype.previewTimer = function(babyid) {
+    const previews = document.querySelectorAll('.nft-preview[data-babyid="' + babyid + '"]')
+
+    previews.forEach(function(e) {
+        const timerEl = e.querySelector('.nft-item__timer')
+        const timer = new Timer(timerEl, new Date())
+        timer.start(function(){
+            const revealButton = document.createElement('div')
+            revealButton.className = 'nft-item__indicator nft-item__reveal'
+            revealButton.innerHTML = 'Reveal Now!'
+            revealButton.dataset.id = babyid
+            timerEl.remove()
+            e.prepend(revealButton)
+            e.querySelector('.nft-item__progress-bar').classList.add('finished')
+            e.dataset.step = 'completed'
+        })
+    })
+}
+Breeding.prototype.changePreview = function(babyid, image) {
+    const previews = document.querySelectorAll('.nft-preview[data-babyid="' + babyid + '"]')
+
+    previews.forEach(function(preview) {
+        preview.dataset.step = 'reveal'
+        preview.querySelector('.nft-item__indicator').classList.add('d-none')
+        preview.querySelector('.nft-item__progress-bar').classList.add('d-none')
+        preview.querySelector('.nft-item__img').src = image
+    })
+
+}
 const breeding = new Breeding()
 
 //Swipers
 const sliders = {
-    windowSize: function() {
-
-    },
     scroll: {
+        slider: null,
         init: function() {
-            new Swiper('.swiper-scroll', {
+            this.slider = new Swiper('.swiper-scroll', {
                 direction: "vertical",
                 slidesPerView: "auto",
                 freeMode: true,
@@ -353,16 +397,7 @@ const sliders = {
                 )
             })
         },
-        changeSlideImg: function(id, image) {
 
-            let slide = this.array[1].slides.filter(e => {
-                return e.dataset.babyid == id
-            })
-            slide[0].dataset.step = 'reveal'
-            slide[0].querySelector('.nft-item__indicator').remove()
-            slide[0].querySelector('.nft-item__progress-bar').remove()
-            slide[0].querySelector('.nft-item__img').src = image
-        },
         checkEmpty: function(swiper) {
             const swiperOverflow = swiper.$el.closest('.swiper-overflow')[0]
             if ( swiperOverflow ) {
@@ -374,40 +409,11 @@ const sliders = {
             }
         },
         appendSlide: function(babyid) {
-            breedingState.babyid = babyid
-            this.array[1].prependSlide([
-                `<div class="swiper-slide nft-item" 
-                    data-babyid="${babyid}" 
-                    data-potion="${breedingState.potion}"
-                    data-parents="${breedingState.parents}"
-                    data-datestart="${breedingState.datestart}"
-                    data-step="in-progress">
-                    <div class="nft-item__indicator nft-item__timer">:</div>
-                    <img src="images/new-nft.svg" alt="" class="nft-item__img">
-                    <div class="nft-item__progress-bar">
-                        <div class="nft-item__progress-bar__handler" style="width: 0%"></div>
-                    </div>
-                </div>`
-            ])
+            this.array[1].prependSlide([breeding.preview(babyid)])
 
             sliders.nft.checkEmpty(this.array[1])
-            sliders.nft.slideTimer(babyid)
+            breeding.previewTimer(babyid)
         },
-        slideTimer: function(babyid) {
-            const slide = this.array[1].el.querySelector('[data-babyid="' + babyid + '"]')
-            const timerEl = slide.querySelector('.nft-item__timer')
-            const timer = new Timer(timerEl, new Date())
-            timer.start(function(){
-                const revealButton = document.createElement('div')
-                revealButton.className = 'nft-item__indicator nft-item__repack'
-                revealButton.innerHTML = 'Reveal Now!'
-                revealButton.dataset.id = babyid
-                timerEl.remove()
-                slide.prepend(revealButton)
-                slide.querySelector('.nft-item__progress-bar').classList.add('finished')
-                slide.dataset.step = 'completed'
-            })
-        }
     },
     cryo: {
         array: [],
@@ -462,6 +468,19 @@ const sliders = {
                 const activeSlide = e.slides[e.activeIndex]
                 activeSlide.classList.add('locked-slide')
             })
+            const walletSlides = sliders.scroll.slider.el.querySelectorAll('.swiper-slide')
+            walletSlides.forEach(function(e) {
+
+                if ( e.classList.contains('nft-list__card_male') ) {
+                    if ( e.dataset.id == breedingState.parents[0] )
+                        e.classList.add('locked')
+                }
+
+                if ( e.classList.contains('nft-list__card_female') ) {
+                    if ( e.dataset.id == breedingState.parents[1] )
+                        e.classList.add('locked')
+                }
+            })
         },
         unlockSlide: function() {
             this.array.forEach(function(e) {
@@ -480,7 +499,8 @@ const sliders = {
             }
             return status
         },
-        goToSlideById: function(parents) {
+        goToSlideById: function( parents ) {
+
             this.array.forEach(function(e, i) {
                 for ( let slide in e.slides ) {
                     if ( e.slides[slide].dataset.id === parents[i] ) {
@@ -511,9 +531,9 @@ potionsSlider.addEventListener('click', function(e) {
         breeding.checkReady()
     }
 })
-myBreedingSlider.addEventListener('click', function(e) {
-    const myBreeding = e.target.closest('.swiper-slide')
-    breeding.open(myBreeding.dataset)
+document.addEventListener('click', function(e) {
+    const previews = e.target.closest('.nft-preview')
+    if ( previews ) breeding.open(previews.dataset)
 })
 breedingNew.addEventListener('click', function(e){
     e.preventDefault()
@@ -522,4 +542,20 @@ breedingNew.addEventListener('click', function(e){
 revealNow.addEventListener('click', function(e){
     e.preventDefault()
     breeding.reveal(breedingState.babyid)
+})
+document.addEventListener('click', function(e){
+    const target = e.target.closest('.btn_type_use')
+    if ( target ) {
+        e.preventDefault()
+
+        if ( target.classList.contains('btn_type_use_male') ) {
+            breedingState.parents[0] = target.closest('[data-id]').dataset.id
+        }
+        if ( target.classList.contains('btn_type_use_female') ) {
+            breedingState.parents[1] = target.closest('[data-id]').dataset.id
+        }
+
+        wallet.close()
+        sliders.cryo.goToSlideById(breedingState.parents)
+    }
 })

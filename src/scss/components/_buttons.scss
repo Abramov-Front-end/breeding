@@ -136,7 +136,34 @@
       }
     }
   }
+  &__chosen {
+    display: none;
+    margin-bottom: 17px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25px;
+    font-size: $font-size;
+    font-weight: $font-weight_black;
+    color: $white;
+    text-shadow: 0 6px 6px rgba(0, 0, 0, 0.26);
+    text-transform: uppercase;
+    border-radius: $border-radius-md;
 
+    &_male {
+      background: $blue;
+      box-shadow: 0 3px 0 $blue_dark;
+    }
+
+    &_female {
+      background: $red;
+      box-shadow: 0 3px 0 $red_dark;
+    }
+
+    @media (max-width: $sm) {
+      display: flex;
+    }
+  }
   &_crypto {
     justify-content: center;
     padding: 4px 7px 4px 9px;
