@@ -218,6 +218,11 @@ Breeding.prototype.reload = function() {
           this.cryogenicEl.prepend(content)
 
     creoCamera = document.getElementById('creoCamera')
+    const revealSplash = this.cryogenicEl.querySelector('.reveal-splash')
+    const revealSplashClone = revealSplash.cloneNode(false)
+    revealSplash.remove()
+    this.cryogenicEl.prepend(revealSplashClone)
+
     breedingState.step = 'start'
     breeding.checkReady()
 }
