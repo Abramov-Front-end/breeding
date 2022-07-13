@@ -9,6 +9,7 @@ let breedingState = {
     status: false,
     step: 'start',
     potion: null,
+    lockedPotions: [],
     parents: [],
     babyid: null,
     datestart: null
@@ -83,7 +84,7 @@ Timer.prototype.start = function (stopFunc) {
 
             if(this.el.closest('.nft-item')) {
                 let progress = (timeFinished - this.timeStart.getTime() - timeLeft) / (timeFinished - this.timeStart.getTime()) * 100
-                this.el.parentElement.querySelector('.nft-item__progress-bar__handler').style.width = Math.floor(progress) + '%'
+                this.el.closest('.nft-item').querySelector('.nft-item__progress-bar__handler').style.width = Math.floor(progress) + '%'
             }
         } else {
             this.el.innerHTML = ':'
@@ -135,6 +136,7 @@ Breeding.prototype.start = function() {
     const babyid = Math.floor(+breedingState.parents[0]+breedingState.parents[0] + Math.floor(Math.random()*1000))
 
     breedingState.step = 'in-progress'
+    breedingState.lockedPotions.push(breedingState.potion)
     breedingState.datestart = new Date().getTime()
     breedingState.babyid = babyid
 
@@ -313,16 +315,22 @@ Breeding.prototype.checkReady = function() {
     return breedingState.status
 }
 Breeding.prototype.preview = function(babyid) {
-    return `<div class="swiper-slide nft-item nft-preview" 
+    return `<div class="swiper-slide nft-item nft-preview nft-list__card" 
                     data-babyid="${babyid}" 
                     data-potion="${breedingState.potion}"
                     data-parents="${breedingState.parents}"
                     data-datestart="${breedingState.datestart}"
                     data-step="in-progress">
-                    <div class="nft-item__indicator nft-item__timer">:</div>
-                    <img src="images/new-nft.svg" alt="" class="nft-item__img">
-                    <div class="nft-item__progress-bar">
-                        <div class="nft-item__progress-bar__handler" style="width: 0%"></div>
+                    
+                    <div class="nft-item__img">
+                        <div class="nft-item__indicator nft-item__timer">:</div>
+                        <img src="images/new-nft.svg" alt="" />
+                    </div>
+                    <div class="nft-item__description">
+                        <div class="nft-card__title">${'Baby <br/>#' + breedingState.potion}</div>
+                        <div class="nft-item__progress-bar">
+                            <div class="nft-item__progress-bar__handler" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>`
 }
@@ -332,13 +340,14 @@ Breeding.prototype.previewTimer = function(babyid) {
     previews.forEach(function(e) {
         const timerEl = e.querySelector('.nft-item__timer')
         const timer = new Timer(timerEl, new Date())
-        timer.start(function(){
+
+        timer.start(function() {
             const revealButton = document.createElement('div')
             revealButton.className = 'nft-item__indicator nft-item__reveal'
             revealButton.innerHTML = 'Reveal Now!'
             revealButton.dataset.id = babyid
             timerEl.remove()
-            e.prepend(revealButton)
+            e.querySelector('.nft-item__img').prepend(revealButton)
             e.querySelector('.nft-item__progress-bar').classList.add('finished')
             e.dataset.step = 'completed'
         })
@@ -351,9 +360,8 @@ Breeding.prototype.changePreview = function(babyid, image) {
         preview.dataset.step = 'reveal'
         preview.querySelector('.nft-item__indicator').classList.add('d-none')
         preview.querySelector('.nft-item__progress-bar').classList.add('d-none')
-        preview.querySelector('.nft-item__img').src = image
+        preview.querySelector('.nft-item__img img').src = image
     })
-
 }
 const breeding = new Breeding()
 
@@ -415,6 +423,7 @@ const sliders = {
         },
         appendSlide: function(babyid) {
             this.array[1].prependSlide([breeding.preview(babyid)])
+            sliders.scroll.slider.prependSlide([breeding.preview(babyid)])
 
             sliders.nft.checkEmpty(this.array[1])
             breeding.previewTimer(babyid)
@@ -529,12 +538,24 @@ cryogenicEl.addEventListener('click', function(e) {
 potionsSlider.addEventListener('click', function(e) {
     const potion = e.target.closest('.swiper-slide')
 
-    if ( potion && !potion.classList.contains('locked') && breedingState.step !== 'potion-checked') {
-        potion.classList.add('locked')
-        breedingState.step = 'potion-checked'
-        breedingState.potion = potion.dataset.id
-        breeding.checkReady()
+    if ( potion ) {
+        if ( !potion.classList.contains('locked') ) {
+            if ( breedingState.step !== 'potion-checked' ) {
+                potion.classList.add('locked')
+                breedingState.step = 'potion-checked'
+                breedingState.potion = potion.dataset.id
+                breeding.checkReady()
+            }
+        } else {
+            if ( potion.dataset.id === breedingState.potion && breedingState.lockedPotions.indexOf(breedingState.potion) < 0 ) {
+                potion.classList.remove('locked')
+                breedingState.step = 'start'
+                breedingState.potion = null
+                breeding.checkReady()
+            }
+        }
     }
+
 })
 document.addEventListener('click', function(e) {
     const previews = e.target.closest('.nft-preview')
