@@ -23,6 +23,8 @@ function Wallet(btnOpen, btnClose) {
 }
 Wallet.prototype.open = function(){
     walletBlock.classList.add('open')
+    sliders.scroll.slider.update(true)
+    sliders.scroll.slider.scrollbar.updateSize()
     setTimeout(function(){
         walletBlock.classList.add('on')
     }, 100)
@@ -50,7 +52,6 @@ document.addEventListener('click', function(e){
     } else if ( target.closest('.btn__chosen') ) {
         wallet.open()
     }
-
 })
 
 //Timers

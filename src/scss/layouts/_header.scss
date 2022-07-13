@@ -157,6 +157,13 @@
           font-size: $font-size;
         }
 
+        @media (max-width: $sm) {
+          padding: 0 30px;
+          height: 43px;
+          background-size: 17px 19px;
+          font-size: 12px;
+        }
+
         &::placeholder {
           color: $color_text;
           font-family: $font-family;
@@ -177,6 +184,11 @@
         border: 2px solid $grey_light;
         border-radius: $border-radius-md;
 
+        @media (max-width: $sm) {
+          padding-top: 1px;
+          height: 43px;
+        }
+
         .radio {
           margin-left: 8px;
 
@@ -186,6 +198,14 @@
 
             @media (max-width: $md) {
               font-size: 12px;
+            }
+
+            @media (max-width: $sm) {
+              padding: 0 5px;
+              width: 61px;
+              height: 31px;
+              white-space: normal;
+              line-height: 11px;
             }
           }
 
@@ -239,7 +259,8 @@
 
           @media (max-width: $md) {
             padding: 0 10px;
-            font-size: $font-size;
+            height: 26px;
+            font-size: $font-size - 2;
             min-width: auto;
           }
         }
@@ -264,8 +285,8 @@
             content: '';
             display: block;
             margin-right: 14px;
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             background: $white;
             border: 6px solid $grey_light;
             border-radius: $border-radius;

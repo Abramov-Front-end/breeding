@@ -41,8 +41,12 @@
 
       &.nft-item__img {
         background: $green_light;
-        position: relative;
-        overflow: visible;
+
+        .nft-item__indicator {
+          transform: translateY(-9px);
+          align-self: flex-start;
+          top: auto;
+        }
       }
 
       @media (max-width: $md) {
@@ -51,6 +55,7 @@
         height: 86px;
 
         img {
+          width: auto;
           height: 100%;
         }
       }
@@ -258,7 +263,7 @@
     img {
       display: block;
       width: 100%;
-      height: 100%;
+      //height: 100%;
     }
   }
 
