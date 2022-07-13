@@ -137,7 +137,7 @@
     }
   }
   &__chosen {
-    display: none;
+    display: none !important;
     margin-bottom: 17px;
     justify-content: center;
     align-items: center;
@@ -161,7 +161,7 @@
     }
 
     @media (max-width: $sm) {
-      display: flex;
+      display: flex !important;
     }
   }
   &_crypto {
