@@ -47,6 +47,10 @@
           align-self: flex-start;
           top: auto;
 
+          @media (max-width: $sm) {
+            transform: translateY(0);
+          }
+
           &.nft-item__reveal {
             display: flex;
             justify-content: center;

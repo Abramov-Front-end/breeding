@@ -249,6 +249,7 @@ Breeding.prototype.finish = function(opened) {
 }
 Breeding.prototype.open = function(data) {
     this.reload()
+    wallet.close()
 
     breedingState.status = true
     breedingState = {...breedingState, ...data}
