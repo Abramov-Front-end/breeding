@@ -46,6 +46,29 @@
           transform: translateY(-9px);
           align-self: flex-start;
           top: auto;
+
+          &.nft-item__reveal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 32px;
+            font-size: $font-size_md;
+            transform: none;
+            align-self: center;
+            right: 13px;
+
+            @media (max-width: $md) {
+              width: 106px;
+              height: 42px;
+              font-size: $font-size;
+              right: 14px;
+            }
+
+            @media (max-width: $sm) {
+              right: 12px;
+            }
+          }
         }
       }
 

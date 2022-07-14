@@ -62,6 +62,7 @@ function Timer (el, timeStart) {
     this.interval = null
 }
 Timer.prototype.start = function (stopFunc) {
+
     const total = 0.25
     const timeFinished = this.timeStart.getTime() + total*60*1000
 
@@ -201,13 +202,15 @@ Breeding.prototype.start = function() {
     }, 6300)
 }
 Breeding.prototype.reload = function() {
-    this.cryogenicEl.className = 'cryogenic'
-
-    sliders.cryo.enable()
 
     for ( let timeout of this.timeouts ) {
         clearTimeout(timeout)
     }
+
+    this.cryogenicEl.className = 'cryogenic'
+
+    sliders.cryo.enable()
+
     for ( let sound in this.sounds ) {
         this.sounds[sound].pause()
         this.sounds[sound].currentTime = 0
@@ -234,18 +237,19 @@ Breeding.prototype.finish = function(opened) {
     this.sounds.complete.play()
     this.sounds.robot.pause()
 
-    setTimeout(function(){
+    this.timeoutFunc(function() {
         this.cryogenicEl.classList.add('on')
-    }.bind(this), 100)
+    }, 100)
 
-    setTimeout(function(){
+    this.timeoutFunc(function() {
         this.cryogenicEl.className = 'cryogenic completed ' + (opened ? 'opened' : 'on')
-    }.bind(this), 1100)
+    }, 1100)
 
     breedingState.step = 'completed'
 }
 Breeding.prototype.open = function(data) {
     this.reload()
+
     breedingState.status = true
     breedingState = {...breedingState, ...data}
     breedingState.parents = data.parents.split(',')
@@ -257,18 +261,23 @@ Breeding.prototype.open = function(data) {
 
     if ( breedingState.step === 'in-progress' ) {
         this.sounds.robot.play()
-    }
-    if ( breedingState.step === 'completed' ) {
-        this.sounds.complete.play()
-    }
 
-    if ( breedingState.step !== 'reveal' ) {
         const potionTitle = this.cryogenicEl.querySelector('.potion .potion__title b')
         potionTitle.innerHTML = '#' + breedingState.potion
 
         const timerEl = creoCamera.querySelector('.breeding-timer')
+
         this.timer = new Timer(timerEl, breedingState.datestart)
         this.timer.start(this.finish.bind(this, true))
+    }
+
+    if ( breedingState.step === 'completed' ) {
+        this.sounds.complete.play()
+    }
+
+    if ( breedingState.step === 'reveal' ) {
+        const revealResult = document.querySelector('.reveal-results')
+        revealResult.querySelector('.reveal-results__title span').innerHTML = breedingState.potion
     }
 }
 Breeding.prototype.reveal = function(id) {
