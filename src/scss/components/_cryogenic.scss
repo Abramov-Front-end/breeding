@@ -696,7 +696,19 @@
     }
   }
 
+  &.prereveal {
+    .animate_reveal {
+      display: block;
+    }
+    .plate {
+      display: none !important;
+    }
+  }
+
   &.reveal {
+    .animate_reveal {
+      display: block;
+    }
     .reveal-results {
       display: block;
     }

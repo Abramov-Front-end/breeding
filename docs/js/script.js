@@ -118,6 +118,7 @@ function Breeding() {
     this.sounds.mutant1 = new Audio('audio/03_sound_mutant.mp3')
     this.sounds.mutant2 = new Audio('audio/04_sound_mutant.mp3')
     this.sounds.complete = new Audio('audio/06_breeding_complete.mp3?v01')
+    this.sounds.glass = new Audio('audio/08_glass_broke.mp3')
     this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3?v01')
 
     this.timeoutFunc = function(func, time) {
@@ -284,15 +285,22 @@ Breeding.prototype.open = function(data) {
 Breeding.prototype.reveal = function(id) {
 
     breedingState.step = 'reveal'
-    this.cryogenicEl.className = 'cryogenic reveal'
+    this.cryogenicEl.className = 'cryogenic prereveal'
+    this.timeoutFunc(function(){
+        this.sounds.glass.play()
+    }, 50)
     this.cryogenicEl.querySelector('.reveal-results__title span').innerHTML = breedingState.potion
-
     breeding.changePreview(id, 'images/temp/baby1.png')
 
     this.timeoutFunc(function(){
-        this.cryogenicEl.classList.add('on')
-        this.sounds.reveal.play()
-    }, 300)
+        this.cryogenicEl.className = 'cryogenic reveal'
+
+        this.timeoutFunc(function(){
+            this.cryogenicEl.classList.add('on')
+            this.sounds.reveal.play()
+        }, 300)
+    }, 2100)
+
 }
 Breeding.prototype.checkReady = function() {
 
