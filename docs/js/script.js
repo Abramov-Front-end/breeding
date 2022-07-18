@@ -120,19 +120,6 @@ function Breeding() {
     this.sounds.glass = new Audio('audio/08_glass_broke.mp3')
     this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3?v01')
 
-    for(let key in this.sounds) {
-        const sound = this.sounds[key]
-        if ( !sound.loop  ) {
-            sound.addEventListener("canplaythrough", event => {
-                sound.play()
-                sound.pause()
-            });
-        } else {
-            sound.play()
-            sound.pause()
-        }
-    }
-
     this.timeoutFunc = function(func, time) {
         this.timeouts.push(
             setTimeout(func.bind(this), time)
@@ -155,6 +142,12 @@ Breeding.prototype.start = function() {
     breedingState.babyid = babyid
 
     sliders.nft.appendSlide(babyid)
+
+    for(let key in this.sounds) {
+        const sound = this.sounds[key]
+        sound.play()
+        sound.pause()
+    }
 
     this.cryogenicEl.className = 'cryogenic started step_1'
     this.sounds.water.play()
