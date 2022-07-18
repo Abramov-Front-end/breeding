@@ -4,7 +4,8 @@
   min-height: 100%;
   overflow: hidden;
   min-width: 375px;
-  background: #0b0b15;
+  background: #0b0b15 url("../images/background.jpg") right bottom/cover no-repeat;
+  background-attachment: fixed;
 
   &:before, &:after {
     content: '';

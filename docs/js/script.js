@@ -105,7 +105,6 @@ Timer.prototype.clear = function() {
 }
 
 //CreoCamera
-
 function Breeding() {
     this.cryogenicEl = cryogenicEl
     this.timeouts = []
@@ -121,12 +120,24 @@ function Breeding() {
     this.sounds.glass = new Audio('audio/08_glass_broke.mp3')
     this.sounds.reveal = new Audio('audio/07_breeding_reveal.mp3?v01')
 
+    for(let key in this.sounds) {
+        const sound = this.sounds[key]
+        if ( !sound.loop  ) {
+            sound.addEventListener("canplaythrough", event => {
+                sound.play()
+                sound.pause()
+            });
+        } else {
+            sound.play()
+            sound.pause()
+        }
+    }
+
     this.timeoutFunc = function(func, time) {
         this.timeouts.push(
             setTimeout(func.bind(this), time)
         )
     }
-
 }
 
 Breeding.prototype.start = function() {
@@ -346,7 +357,7 @@ Breeding.prototype.preview = function(babyid) {
                         <img src="images/new-nft.svg" alt="" />
                     </div>
                     <div class="nft-item__description">
-                        <div class="nft-card__title">${'Baby <br/>#' + breedingState.potion}</div>
+                        <div class="nft-card__title">${'Gen-Q Baby <br/>#' + breedingState.potion}</div>
                         <div class="nft-item__progress-bar">
                             <div class="nft-item__progress-bar__handler" style="width: 0%"></div>
                         </div>
