@@ -7,6 +7,7 @@
       color: $white;
       text-align: center;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
 
       @media (max-width: $md) {
         font-size: 22px;
@@ -25,7 +26,19 @@
         @media (max-width: $sm) {
           display: inline;
         }
+
+        &.inline {
+          display: inline;
+        }
       }
+    }
+
+    .sub-title {
+      margin-bottom: 7px;
+      font-size: 19px;
+      color: $red;
+      text-transform: uppercase;
+      font-weight: $font-weight_bold;
     }
   }
 }

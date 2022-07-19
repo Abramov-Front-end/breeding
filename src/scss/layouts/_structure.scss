@@ -6,6 +6,7 @@
   min-width: 375px;
   background: #0b0b15 url("../images/background.jpg") right bottom/cover no-repeat;
   background-attachment: fixed;
+  position: relative;
 
   &:before, &:after {
     content: '';
@@ -69,6 +70,7 @@
   right: 0;
   bottom: 0;
   pointer-events: none;
+  z-index: 0;
 
   @media (max-width: $sm) {
     width: auto;

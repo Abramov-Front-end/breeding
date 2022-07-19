@@ -21,6 +21,18 @@
   }
 
   &_size {
+    &_large {
+      height: 63px;
+      border: 2px solid;
+      border-radius: $border-radius;
+      font-size: $font-size-sm;
+      text-transform: uppercase;
+
+      img {
+        display: block;
+        margin-right: 16px;
+      }
+    }
     &_big {
       height: 46px;
       border-radius: $border-radius-bg;
@@ -69,6 +81,27 @@
     &_close {
       background: $white;
       box-shadow: $bs_btn_primary;
+    }
+
+    &_twitter {
+      background: $blue;
+      color: $white;
+      border-color: $blue;
+
+      &:hover {
+        background: $blue_dark;
+        border-color: $blue_dark;
+      }
+
+      &-logout {
+        background: $blue_darken;
+        border-color: $blue_darken;
+
+        &:hover {
+          background: lighten($blue_darken, 10%);
+          border-color: lighten($blue_darken, 10%);
+        }
+      }
     }
   }
 
@@ -132,6 +165,63 @@
         &:hover {
           background: $red;
           color: $white;
+        }
+      }
+    }
+    &_next, &_prev {
+      padding: 0 34px;
+      border: 2px solid;
+      position: relative;
+      border-radius: $border-radius;
+      font-weight: $font-weight_medium;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+      }
+    }
+    &_next {
+      padding-right: 38px;
+      border-color: $red;
+      color: $red;
+
+      &:after {
+        border: solid $red;
+        border-width: 1px 1px 0 0;
+        transform: rotate(45deg);
+        right: 10px;
+      }
+
+      &:hover {
+        background: $red;
+        color: $white;
+
+        &:after {
+          border-color: $white;
+        }
+      }
+    }
+    &_prev {
+      padding-left: 38px;
+      border-color: $blue_darken;
+      color: $blue_darken;
+
+      &:after {
+        border: solid $blue_darken;
+        border-width: 1px 0 0 1px;
+        transform: rotate(-45deg);
+        left: 10px;
+      }
+
+      &:hover {
+        background: $blue_darken;
+        color: $white;
+
+        &:after {
+          border-color: $white;
         }
       }
     }

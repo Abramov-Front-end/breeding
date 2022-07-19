@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>BREEDING | LOGIN</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="css/main.css?v19">
+</head>
+<body>
+<div class="site-wrap">
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo">
+        <img src="images/logo.svg" class="header__logo_img" alt="BREEDING">
+        <span class="header__logo_text">
+            Generation Q <b>BREEDING</b>
+        </span>
+      </a>
+    </div>
+  </header>
+  <div class="content login-page">
+    <div class="content__inner">
+      <h1 class="title">Log In to your <span class="inline">NFT Wallet</span></h1>
+      <div class="login-area">
+        <div class="step_0 show">
+          <a href="#" class="btn btn_size_large btn_color_twitter" id="loginBtn">
+            <img src="images/twitter.svg" alt="">
+            Log in with twitter
+          </a>
+        </div>
+        <div class="step_1">
+          <div class="logout-block">
+            <object data="images/check_mark.svg" type="image/svg+xml"></object>
+            <a href="#" class="btn btn_size_large btn_color_twitter btn_color_twitter-logout" id="logoutBtn">
+              <img src="images/twitter.svg" alt="">
+              LOGOUT
+            </a>
+          </div>
+          <div class="controls-buttons">
+            <a href="#" class="btn btn_size_big btn_type_next controls-buttons-next">Next</a>
+          </div>
+        </div>
+        <div class="step_2">
+          <label for="userName">Insert Your <img src="images/crypto-nft.svg" alt=""> username (case-sensitive)</label>
+          <input type="text" placeholder="Your Username" id="userName">
+          <div class="controls-buttons">
+            <a href="#" class="btn btn_size_big btn_type_prev controls-buttons-prev">Back</a>
+            <a href="index.html" class="btn btn_size_big btn_type_next">Verify</a>
+          </div>
+        </div>
+      </div>
+      <div class="important-wrapper">
+        <div class="important-block">
+          <h2 class="sub-title">! Important</h2>
+          <div class="plate login-option">
+            Before Verification your Twitter handle has to be Added to your <img src="images/crypto.com.png" alt="Crypto.com">
+            <img src="images/nft.svg" alt="NFT"> profile or the verification will fail
+          </div>
+        </div>
+        <div class="important-img">
+          <img src="images/login-important.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login-bg"></div>
+</div>
+<video autoplay muted loop id="bgVideo">
+  <source src="video/background_video_1.webm" type="video/webm">
+</video>
+<script src="js/login.js?"></script>
+</body>
+</html>
