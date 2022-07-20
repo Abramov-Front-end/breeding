@@ -23,10 +23,10 @@
   margin: 17px auto;
   width: 100%;
   padding: 32px 46px 44px;
-  background: rgba($white, 0.96);
-  border: 2px solid $white;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.06);
-  border-radius: $border-radius-md;
+  //background: rgba($white, 0.96);
+  //border: 2px solid $white;
+  //box-shadow: 0 6px 6px rgba(0, 0, 0, 0.06);
+  //border-radius: $border-radius-md;
 
   @media (max-width: $sm) {
     margin-top: 0;
@@ -44,10 +44,10 @@
 
   .step_0 {
     align-items: center;
-    padding: 35px 0 78px;
+    padding: 35px 0 72px;
 
     @media (max-width: $sm) {
-      padding: 50px 0 71px;
+      padding: 50px 0 66px;
     }
   }
 
@@ -56,7 +56,7 @@
     padding: 35px 0 0;
 
     @media (max-width: $sm) {
-      padding: 50px 0 71px;
+      padding: 50px 0 0;
     }
   }
   .step_2 {
@@ -65,10 +65,12 @@
     label {
       display: block;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 11px;
       font-size: $font-size-sm;
+      color: $white;
 
       @media (max-width: $sm) {
+        margin-bottom: 8px;
         font-size: $font-size;
       }
 
@@ -126,11 +128,12 @@
 }
 
 .important-wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 400px;
   height: 170px;
   position: relative;
 
   @media (max-width: $sm) {
+    margin-bottom: 140px;
     height: auto;
     text-align: center;
   }
@@ -157,6 +160,12 @@
     right: 0;
     z-index: 0;
 
+    img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      height: 170px;
+    }
     @media (max-width: $sm) {
       position: relative;
     }

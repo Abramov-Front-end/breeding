@@ -2,7 +2,7 @@
   padding: 20px 0;
 
   @media (max-width: $md) {
-    padding: 38px 0 16px;
+    padding: 16px 0 16px;
   }
   &__inner {
     justify-content: space-between;
@@ -57,6 +57,7 @@
   }
 
   .wallet-block {
+    display: flex;
     position: relative;
 
     @media (max-width: $sm) {
@@ -64,6 +65,7 @@
     }
 
     &__btn {
+      margin-left: 16px;
       padding: 0 12px 0 16px;
       position: relative;
       z-index: 1;
@@ -79,6 +81,23 @@
         @media (max-width: $md) {
           height: 26px;
         }
+      }
+    }
+
+    .btn_color_twitter {
+      border-radius: $border-radius;
+
+      @media (max-width: $sm) {
+        display: none;
+        position: absolute;
+        right: 71px;
+        top: 16px;
+      }
+
+      img {
+        display: block;
+        margin-right: 10px;
+        height: 20px;
       }
     }
 
@@ -350,11 +369,22 @@
         }
       }
 
+      .btn_color_twitter {
+        @media (max-width: $sm) {
+          display: flex;
+        }
+      }
+
       .wallet-block__dropdown {
         display: block;
       }
 
       &.on {
+        .btn_color_twitter {
+          @media (max-width: $sm) {
+            opacity: 1;
+          }
+        }
         .wallet-block__dropdown {
           opacity: 1;
         }
