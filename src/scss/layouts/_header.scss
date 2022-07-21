@@ -86,6 +86,8 @@
 
     .btn_color_twitter {
       border-radius: $border-radius;
+      position: relative;
+      z-index: 2;
 
       @media (max-width: $sm) {
         display: none;
