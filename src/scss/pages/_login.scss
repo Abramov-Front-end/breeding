@@ -131,6 +131,8 @@
   margin-bottom: 400px;
   width: 100%;
   position: relative;
+  overflow: hidden;
+  border-radius: 4px;
 
   @media (max-width: $sm) {
     margin-bottom: 140px;
