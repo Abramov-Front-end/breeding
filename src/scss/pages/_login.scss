@@ -129,7 +129,7 @@
 
 .important-wrapper {
   margin-bottom: 400px;
-  height: 170px;
+  width: 100%;
   position: relative;
 
   @media (max-width: $sm) {
@@ -138,36 +138,42 @@
     text-align: center;
   }
 
-  .important-block {
-    position: relative;
-    z-index: 1;
-
-    .plate {
-      position: relative;
-      top: auto;
-      right: auto;
-      bottom: auto;
-      left: auto;
-
-      @media (max-width: $sm) {
-        margin: 0 auto;
-      }
-    }
+  object {
+    display: block;
+    width: 100%;
+    height: auto;
   }
-  .important-img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 0;
 
-    img {
-      display: block;
-      margin: 0 auto;
-      width: auto;
-      height: 170px;
-    }
-    @media (max-width: $sm) {
-      position: relative;
-    }
-  }
+  //.important-block {
+  //  position: relative;
+  //  z-index: 1;
+  //
+  //  .plate {
+  //    position: relative;
+  //    top: auto;
+  //    right: auto;
+  //    bottom: auto;
+  //    left: auto;
+  //
+  //    @media (max-width: $sm) {
+  //      margin: 0 auto;
+  //    }
+  //  }
+  //}
+  //.important-img {
+  //  position: absolute;
+  //  top: 0;
+  //  right: 0;
+  //  z-index: 0;
+  //
+  //  img {
+  //    display: block;
+  //    margin: 0 auto;
+  //    width: auto;
+  //    height: 170px;
+  //  }
+  //  @media (max-width: $sm) {
+  //    position: relative;
+  //  }
+  //}
 }
