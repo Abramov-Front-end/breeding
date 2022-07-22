@@ -14,9 +14,10 @@ Auth.prototype.switchStep = function(duration) {
     } else {
         this.step--
     }
-    console.log(this.step)
+    const area = this.area
+    const steps = area.querySelectorAll('[class^="step_"]')
 
-    const steps = this.area.querySelectorAll('[class^="step_"]')
+    area.className = `login-area step_${this.step}`
 
     steps.forEach(function(e){
         e.classList.remove('show')

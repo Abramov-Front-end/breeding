@@ -125,6 +125,16 @@
       margin: 0 7px;
     }
   }
+  &.step_0 + .important-wrapper {
+    .animation_part_1 {
+      display: block;
+    }
+  }
+  &.step_2 + .important-wrapper {
+    .animation_part_2 {
+      display: block;
+    }
+  }
 }
 
 .important-wrapper {
@@ -141,7 +151,7 @@
   }
 
   object {
-    display: block;
+    display: none;
     width: 100%;
     height: auto;
   }
