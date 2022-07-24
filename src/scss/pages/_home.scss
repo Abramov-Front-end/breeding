@@ -484,6 +484,11 @@
       }
     }
   }
+
+  .genes-button {
+    margin: 16px 0 20px;
+  }
+
   .potions-list {
     width: 100%;
     border-radius: $border-radius-md;
@@ -561,6 +566,9 @@
   }
 
   &.opened {
+    .genes-button {
+      display: none;
+    }
     .embrion {
       display: none;
 
@@ -701,6 +709,12 @@
       .creo-camera-wrapper {
         opacity: 0;
       }
+    }
+  }
+
+  &.started, &.in-progress, &.completed, &.prereveal, &.reveal {
+    .genes-button {
+      display: none;
     }
   }
 }

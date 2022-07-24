@@ -259,7 +259,7 @@
       @media (max-width: $md) {
         transform: translate3d(110px, 0, 0) scale(0.65) !important;
       }
-      @media (max-width: $sm) {
+      @media (max-width: 520px) {
         opacity: 0 !important;
       }
     }
@@ -270,7 +270,7 @@
       @media (max-width: $md) {
         transform: translate3d(-110px, 0, 0) scale(0.65) !important;
       }
-      @media (max-width: $sm) {
+      @media (max-width: 520px) {
         opacity: 0 !important;
       }
     }

@@ -227,6 +227,20 @@
         }
       }
     }
+
+    &_standard {
+      background: $red;
+      box-shadow: 0 3px 0 $red_dark;
+      border-radius: $border-radius-md;
+      font-weight: $font-weight_bold;
+      text-transform: uppercase;
+      color: $white;
+
+      &:hover {
+        background: $red_dark;
+        box-shadow: 0 3px 0 darken($red_dark, 10%);
+      }
+    }
   }
   &__chosen {
     display: none !important;
