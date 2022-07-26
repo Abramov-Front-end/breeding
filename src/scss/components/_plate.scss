@@ -34,7 +34,7 @@
       height: 78px;
     }
   }
-  &.not-ready-for-breeding {
+  &.not-ready-for-breeding, &.ready-for-breeding {
     height: 76px;
     background-image: url(../images/plate-small.svg);
 

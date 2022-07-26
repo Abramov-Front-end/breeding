@@ -243,13 +243,14 @@
     }
 
     &_genes {
+      display: none;
       padding: 0;
       border: none;
-      width: 45.45%;
-      height: 22.56%;
+      width: 60.6%;
+      height: 30.08%;
       position: absolute;
-      right: -13%;
-      top: 36%;
+      right: -20%;
+      top: 25%;
       z-index: 2;
 
       object {

@@ -134,6 +134,9 @@ Breeding.prototype.start = function() {
     const potionTitle = this.cryogenicEl.querySelector('.potion .potion__title b')
     potionTitle.innerHTML = '#' + breedingState.potion
 
+    const editGenesBTN = this.cryogenicEl.querySelector('.btn_type_genes')
+    editGenesBTN.classList.remove('show')
+
     const babyid = Math.floor(+breedingState.parents[0]+breedingState.parents[0] + Math.floor(Math.random()*1000))
 
     breedingState.step = 'in-progress'
@@ -311,6 +314,7 @@ Breeding.prototype.checkReady = function() {
     const plateNotReady = this.cryogenicEl.querySelector('.plate.not-ready-for-breeding')
     const plateNotReadyParent = this.cryogenicEl.querySelector('.plate.not-ready-parent')
     const plateReady = this.cryogenicEl.querySelector('.plate.ready-for-breeding')
+    const editGenesBTN = this.cryogenicEl.querySelector('.btn_type_genes')
 
     breedingState.status = false
 
@@ -333,6 +337,12 @@ Breeding.prototype.checkReady = function() {
             plateNotReadyParent.classList.add('show')
             breedingState.status = false
         }
+    }
+
+    if ( breedingState.status ) {
+        editGenesBTN.classList.add('show')
+    } else {
+        editGenesBTN.classList.remove('show')
     }
 
     return breedingState.status
@@ -556,7 +566,7 @@ sliders.cryo.init(document.querySelectorAll('.cryo-swiper'))
 //EventListeners
 cryogenicEl.addEventListener('click', function(e) {
     if ( !breedingState.status ) return false
-    if ( e.target.closest('#creoCamera') ) breeding.start()
+    if ( e.target.closest('#startBreeding') ) breeding.start()
 })
 potionsSlider.addEventListener('click', function(e) {
     const potion = e.target.closest('.swiper-slide')

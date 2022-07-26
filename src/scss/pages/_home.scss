@@ -235,7 +235,9 @@
       }
     }
     .btn_type_genes {
-
+      &.show {
+        display: block;
+      }
     }
   }
   .splash {
@@ -488,9 +490,9 @@
     }
   }
 
-  .genes-button {
-    margin: 16px 0 20px;
-  }
+  //.genes-button {
+  //  margin: 16px 0 20px;
+  //}
 
   .potions-list {
     width: 100%;
@@ -716,8 +718,8 @@
   }
 
   &.started, &.in-progress, &.completed, &.prereveal, &.reveal {
-    .btn_type_genes {
-      display: none;
-    }
+    //.btn_type_genes.show {
+    //  display: none;
+    //}
   }
 }
