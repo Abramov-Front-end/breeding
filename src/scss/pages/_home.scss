@@ -234,6 +234,9 @@
         }
       }
     }
+    .btn_type_genes {
+
+    }
   }
   .splash {
     display: none;
@@ -713,7 +716,7 @@
   }
 
   &.started, &.in-progress, &.completed, &.prereveal, &.reveal {
-    .genes-button {
+    .btn_type_genes {
       display: none;
     }
   }
