@@ -1,0 +1,155 @@
+.popup {
+  display: none;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  background: rgba($black, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  &.show {
+    display: flex;
+  }
+
+  &__content {
+    margin: auto;
+    padding: 55px 20px 36px;
+    width: 100%;
+    max-width: 1180px;
+    max-height: 100%;
+    background: $white;
+    border-radius: $border-radius-bg;
+    box-shadow: 0 6px 6px rgba($black, 0.06);
+    overflow-y: auto;
+
+    @media (max-width: $sm) {
+      padding: 17px 5px 20px;
+    }
+  }
+}
+
+.genes-edit {
+  &__area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    @media (max-width: 1080px) {
+      flex-wrap: wrap;
+    }
+
+    &__options {
+      flex: 1 1 292px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+
+      @media (max-width: 1080px) {
+        flex-basis: 50%;
+        order: 0
+      }
+
+      @media (max-width: $sm) {
+        flex-basis: 100%;
+        padding: 0 4px;
+      }
+    }
+    &__result {
+      flex: 0 0 100%;
+      margin-bottom: 20px;
+      padding: 0 20px;
+      max-width: 433px;
+      height: 433px;
+      position: relative;
+      background: rgba($white, 0.86);
+      border: 2px solid rgba($black, 0.06);
+      box-shadow: 0 6px 6px rgba($black, 0.06);
+      border-radius: $border-radius-bg;
+
+      @media (max-width: 1080px) {
+        order: 2
+      }
+
+      @media (max-width: $sm) {
+        max-width: 228px;
+        height: 228px;
+      }
+    }
+  }
+  &__button {
+    padding-top: 58px;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: $sm) {
+      padding-top: 22px;
+    }
+
+    .initiate-breeding:not(.show) {
+      display: none;
+    }
+  }
+}
+
+.options-list {
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+
+  @media (max-width: $sm) {
+    justify-content: center;
+  }
+
+  &__item {
+    margin:  0 5px 10px;
+    width: 66px;
+    height: 66px;
+    border: 1px solid #E6E7ED;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.new {
+      &:before {
+        content: 'NEW!';
+        display: block;
+        margin: -5px 0 0 -4px;
+        padding: 1px 0 0 2px;
+        width: 36px;
+        height: 22px;
+        background: url(../images/new_mark.svg) top left/100% auto no-repeat;
+        box-sizing: border-box;
+        font-size: 10px;
+        font-weight: $font-weight_bold;
+        color: $white;
+        position: absolute;
+        order: 0;
+      }
+    }
+    &.checked {
+      display: flex;
+      &:after {
+        content: '';
+        display: block;
+        margin: -2px -2px 0 auto;
+        width: 17px;
+        height: 17px;
+        background: url(../images/check_mark_option.svg) center center/100% 100% no-rpeat;
+        position: absolute;
+        transform: translateX(50px);
+        order: 1;
+      }
+
+      img {
+        order: 2;
+      }
+    }
+  }
+}

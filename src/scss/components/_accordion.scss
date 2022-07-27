@@ -1,0 +1,105 @@
+.accordion {
+  display: flex;
+  flex-flow: column nowrap;
+
+  &__item {
+    margin-bottom: 20px;
+    width: 100%;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__header {
+      display: flex;
+      flex: 0 0 47px;
+      align-items: center;
+      padding: 0 18px 0 15px;
+      max-width: 100%;
+      height: 47px;
+      background: $gradient-card;
+      border: 2px solid $grey_light;
+      border-radius: $border-radius-md;
+      font-size: $font-size-md;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      position: relative;
+
+      @media (max-width: $sm) {
+        margin: 0 auto;
+        max-width: 228px;
+        flex: 0 0 36px;
+        height: 36px;
+        font-size: $font-size;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        margin-left: auto;
+        margin-bottom: 7px;
+        width: 12px;
+        height: 12px;
+        border: solid $black;
+        border-width: 2px 2px 0 0;
+        transform: rotate(135deg);
+        pointer-events: none;
+
+        @media (max-width: $sm) {
+          width: 8px;
+          height: 8px;
+          margin-bottom: 5px;
+        }
+      }
+
+      &:before {
+        content: '';
+        display: none;
+        width: 26px;
+        height: 26px;
+        background: url(../images/check_mark_red.svg) center center/100% 100% no-repeat;
+        position: absolute;
+        right: 52px;
+
+        @media (max-width: $sm) {
+          width: 20px;
+          height: 20px;
+          right: 40px;
+        }
+      }
+    }
+
+    &__content {
+      margin: 0 -5px 0 -4px;
+      height: 0;
+      overflow: hidden;
+      transition: all .3s;
+      box-sizing: content-box;
+    }
+
+    &_opened {
+      .accordion__item__header {
+        &:after {
+          margin-top: 7px;
+          margin-bottom: 0;
+          transform: rotate(-45deg);
+
+          @media (max-width: $sm) {
+            margin-top: 5px;
+          }
+        }
+      }
+      .accordion__item__content {
+        padding-top: 20px;
+      }
+    }
+
+    &.option_checked {
+      .accordion__item__header {
+        &:before {
+          display: block;
+        }
+      }
+    }
+  }
+}

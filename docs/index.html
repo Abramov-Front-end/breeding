@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>BREEDING</title>
     <link rel="icon" href="favicon.svg">
-    <link rel="stylesheet" href="css/main.css?v32">
+    <link rel="stylesheet" href="css/main.css?v33">
+    <script>
+        // password()
+        // function password() {
+        //     let pass = prompt('Password');
+        //
+        //     if ( pass !== "1234" ) {
+        //         password()
+        //     }
+        // }
+
+    </script>
 </head>
 <body>
 <div class="site-wrap">
@@ -663,7 +674,7 @@
                             <div class="plate not-ready-for-breeding show">Click on love potion to activate breeding</div>
                             <div class="plate not-ready-parent">Please choose unlocked parent to preceed breeding</div>
                             <div class="plate ready-for-breeding" id="startBreeding">Click to Initiate random breeding</div>
-                            <button class="btn btn_size_medium btn_type_genes">
+                            <button class="btn btn_size_medium btn_type_genes" id="startInitiate">
                                 <object data="images/crispr_technology_button_v_2.svg" type="image/svg+xml"></object>
                             </button>
                         </div>
@@ -920,10 +931,251 @@
         </div>
     </footer>
 </div>
+<div id="editGenesPopup" class="popup genes-edit">
+    <div class="popup__content">
+        <div class="genes-edit__area">
+            <div class="genes-edit__area__options accordion">
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Background</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item new" data-option="background" data-option-item="diamonds">
+                                <img src="images/optionsPreview/Background/Diamonds.png" alt="">
+                            </li>
+                            <li class="options-list__item new" data-option="background" data-option-item="dots">
+                                <img src="images/optionsPreview/Background/Dots.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="background" data-option-item="hearts">
+                                <img src="images/optionsPreview/Background/Hearts.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="background" data-option-item="hot-pink">
+                                <img src="images/optionsPreview/Background/Hot-Pink.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="background" data-option-item="new-abc">
+                                <img src="images/optionsPreview/Background/New-ABC.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="background" data-option-item="new-playground">
+                                <img src="images/optionsPreview/Background/New-Playground.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="background" data-option-item="sun-down">
+                                <img src="images/optionsPreview/Background/Sun-Down.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Body</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item" data-option="body" data-option-item="black-moon">
+                                <img src="images/optionsPreview/Body/Black-Moon.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="cream">
+                                <img src="images/optionsPreview/Body/Cream.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="diva">
+                                <img src="images/optionsPreview/Body/Diva.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="glitter">
+                                <img src="images/optionsPreview/Body/Glitter.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="make-up">
+                                <img src="images/optionsPreview/Body/Make-Up.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="mint-swirl">
+                                <img src="images/optionsPreview/Body/Mint-Swirl.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="new-care-hare">
+                                <img src="images/optionsPreview/Body/New-Care-Hare.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="new-care-hare">
+                                <img src="images/optionsPreview/Body/New-Galaxy.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="new-pink-zombie">
+                                <img src="images/optionsPreview/Body/New-Pink-Zombie.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="body" data-option-item="pink-stripes">
+                                <img src="images/optionsPreview/Body/Pink-Stripes.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Head</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item" data-option="head" data-option-item="blonde-hair">
+                                <img src="images/optionsPreview/Head/Blonde-Hair.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="bunny-ears">
+                                <img src="images/optionsPreview/Head/Bunny-Ears.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="burger-queen-jfc">
+                                <img src="images/optionsPreview/Head/Burger-Queen-JFC.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="cdc-red-hair">
+                                <img src="images/optionsPreview/Head/CDC-Red-Hair.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="egyptian-crown">
+                                <img src="images/optionsPreview/Head/Egyptian-Crown.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="flight-attendant">
+                                <img src="images/optionsPreview/Head/Flight-Attendant.png" />
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="gata-gato">
+                                <img src="images/optionsPreview/Head/Gata-Gato.png" />
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="geisha-hair">
+                                <img src="images/optionsPreview/Head/Geisha-Hair.png" />
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="gray-hair">
+                                <img src="images/optionsPreview/Head/Gray-Hair.png" />
+                            </li>
+                            <li class="options-list__item" data-option="head" data-option-item="halo">
+                                <img src="images/optionsPreview/Head/Halo.png" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="genes-edit__area__result"></div>
+            <div class="genes-edit__area__options accordion">
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Clothes</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item new" data-option="clothes" data-option-item="angel">
+                                <img src="images/optionsPreview/Clothes/Angel.png" alt="">
+                            </li>
+                            <li class="options-list__item new" data-option="clothes" data-option-item="bad-girl">
+                                <img src="images/optionsPreview/Clothes/Bad-Girl.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="bomber-jacket">
+                                <img src="images/optionsPreview/Clothes/Bomber-Jacket.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="bunny-dress">
+                                <img src="images/optionsPreview/Clothes/Bunny-Dress.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="burger-queen">
+                                <img src="images/optionsPreview/Clothes/Burger-Queen.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="cdc-blue-suit">
+                                <img src="images/optionsPreview/Clothes/CDC-Blue-Suit.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="coconut">
+                                <img src="images/optionsPreview/Clothes/Coconut.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="clothes" data-option-item="egyptian-queen">
+                                <img src="images/optionsPreview/Clothes/Egyptian-Queen.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Mouth</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item" data-option="mouth" data-option-item="big-gold-fish">
+                                <img src="images/optionsPreview/Mouth/Big-Gold-Fish.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="bitcoin-tab">
+                                <img src="images/optionsPreview/Mouth/Bitcoin-Tab.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="cig-bubble-wand">
+                                <img src="images/optionsPreview/Mouth/Cig-Bubble-Wand.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="diamond-kiss">
+                                <img src="images/optionsPreview/Mouth/Diamond-Kiss.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="geisha-lips">
+                                <img src="images/optionsPreview/Mouth/Geisha-Lips.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="gold-teeth">
+                                <img src="images/optionsPreview/Mouth/Gold-Teeth.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="ice-cream">
+                                <img src="images/optionsPreview/Mouth/Ice-Cream.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="mouth" data-option-item="lick">
+                                <img src="images/optionsPreview/Mouth/Lick.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Nose</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item" data-option="nose" data-option-item="button-nose">
+                                <img src="images/optionsPreview/Nose/Button-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="clown-nose">
+                                <img src="images/optionsPreview/Nose/Clown-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="diamond-nose">
+                                <img src="images/optionsPreview/Nose/Diamond-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="gold-stud">
+                                <img src="images/optionsPreview/Nose/Gold-Stud.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="heart-nose">
+                                <img src="images/optionsPreview/Nose/Heart-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="New-Regular-Nose">
+                                <img src="images/optionsPreview/Nose/New-Regular-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="nose-ring">
+                                <img src="images/optionsPreview/Nose/Nose-Ring.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="sugar-skull-nose">
+                                <img src="images/optionsPreview/Nose/Sugar-Skull-Nose.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="nose" data-option-item="teal-nose">
+                                <img src="images/optionsPreview/Nose/Teal-Nose.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__header">Eyes</div>
+                    <div class="accordion__item__content">
+                        <ul class="options-list">
+                            <li class="options-list__item new" data-option="eyes" data-option-item="9-ball-76.png">
+                                <img src="images/optionsPreview/Eyes/9-Ball-76.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="bitcoin-eyes">
+                                <img src="images/optionsPreview/Eyes/Bitcoin-Eyes.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="blue-shadow">
+                                <img src="images/optionsPreview/Eyes/Blue-Shadow.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="bunny-mask-panda-mask">
+                                <img src="images/optionsPreview/Eyes/Bunny-Mask-Panda-Mask.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="cucumbers">
+                                <img src="images/optionsPreview/Eyes/Cucumbers.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="cyborg">
+                                <img src="images/optionsPreview/Eyes/Cyborg.png" alt="">
+                            </li>
+                            <li class="options-list__item" data-option="eyes" data-option-item="diamond-eyes">
+                                <img src="images/optionsPreview/Eyes/Diamond-Eyes.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="genes-edit__button">
+            <a href="#" class="btn btn_size_big btn_color_secondary initiate-breeding" id="InitiateBreeding">Initiate Breeding</a>
+        </div>
+    </div>
+</div>
 <video autoplay muted loop id="bgVideo">
     <source src="video/background_video_1.webm" type="video/webm">
 </video>
 <script src="js/swiper.min.js"></script>
-<script src="js/script.js?v22"></script>
+<script src="js/accordion.js"></script>
+<script src="js/script.js?v23"></script>
 </body>
 </html>

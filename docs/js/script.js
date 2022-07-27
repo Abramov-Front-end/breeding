@@ -14,7 +14,9 @@ let breedingState = {
     babyid: null,
     datestart: null
 }
+const babiesOptions = {
 
+}
 //Wallet
 const walletBlock = document.getElementById('WalletBlock')
 
@@ -563,11 +565,87 @@ sliders.scroll.init()
 sliders.nft.init(document.querySelectorAll('.swiper'))
 sliders.cryo.init(document.querySelectorAll('.cryo-swiper'))
 
+//Genes Initiate
+function initiateBreeding() {
+    this.popup = document.getElementById('editGenesPopup')
+    this.button = document.getElementById('InitiateBreeding')
+    this.errors = false
+}
+initiateBreeding.prototype.start = function() {
+    this.popup.classList.add('show')
+
+    if ( !babiesOptions[breedingState.potion] ) {
+        babiesOptions[breedingState.potion] = {
+            background: null,
+            body: null,
+            head: null,
+            clothes: null,
+            mouth: null,
+            nose: null,
+            eyes: null
+        }
+    }
+    this.check()
+}
+initiateBreeding.prototype.check = function() {
+    this.errors = false
+    for ( let option in babiesOptions[breedingState.potion] ) {
+
+        if (!babiesOptions[breedingState.potion][option]) this.errors = true
+
+        const options = this.popup.querySelectorAll('.options-list__item[data-option="' + option + '"]')
+
+        options.forEach(item => {
+
+            const accordionItem = item.closest('.accordion__item')
+
+            if ( item.dataset['optionItem'] === babiesOptions[breedingState.potion][option] ) {
+
+                item.classList.add('checked')
+                accordionItem.classList.add('option_checked')
+
+            } else {
+
+                item.classList.remove('checked')
+
+                if (!babiesOptions[breedingState.potion][option])
+                    accordionItem.classList.remove('option_checked')
+            }
+        })
+    }
+
+    if ( this.errors ) {
+        this.button.classList.remove('show')
+    } else {
+        this.button.classList.add('show')
+    }
+}
+
+initiateBreeding.prototype.chose = function(e) {
+
+    const item = e.target.closest('[data-option]')
+    const option = item.dataset.option
+    const optionValue = item.dataset.optionItem
+
+    babiesOptions[breedingState.potion][option] = optionValue
+
+    this.check()
+}
+
+initiateBreeding.prototype.close = function() {
+    this.popup.classList.remove('show')
+}
+
+const initiate = new initiateBreeding()
+
+
 //EventListeners
 cryogenicEl.addEventListener('click', function(e) {
     if ( !breedingState.status ) return false
     if ( e.target.closest('#startBreeding') ) breeding.start()
+    if ( e.target.closest('#startInitiate') ) initiate.start()
 })
+
 potionsSlider.addEventListener('click', function(e) {
     const potion = e.target.closest('.swiper-slide')
 
@@ -590,18 +668,22 @@ potionsSlider.addEventListener('click', function(e) {
     }
 
 })
+
 document.addEventListener('click', function(e) {
     const previews = e.target.closest('.nft-preview')
     if ( previews ) breeding.open(previews.dataset)
 })
+
 breedingNew.addEventListener('click', function(e){
     e.preventDefault()
     breeding.reload()
 })
+
 revealNow.addEventListener('click', function(e){
     e.preventDefault()
     breeding.reveal(breedingState.babyid)
 })
+
 document.addEventListener('click', function(e){
     const target = e.target.closest('.btn_type_use')
     if ( target ) {
@@ -617,4 +699,17 @@ document.addEventListener('click', function(e){
         wallet.close()
         sliders.cryo.goToSlideById(breedingState.parents)
     }
+})
+
+//Options Listener
+document.addEventListener('click', function(e) {
+    const target = e.target
+
+    if ( target.closest('.options-list__item') ) initiate.chose(e)
+
+    if ( target.closest('.popup') && !target.closest('.popup__content') ) {
+
+        initiate.close()
+    }
+
 })
