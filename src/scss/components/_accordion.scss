@@ -6,6 +6,10 @@
     margin-bottom: 20px;
     width: 100%;
 
+    @media (max-width: $sm) {
+      margin-bottom: 8px;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -91,6 +95,11 @@
       }
       .accordion__item__content {
         padding-top: 20px;
+
+        @media (max-width: $sm) {
+          margin-bottom: -8px;
+          padding-top: 8px;
+        }
       }
     }
 

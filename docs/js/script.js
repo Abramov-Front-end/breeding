@@ -3,7 +3,9 @@ const revealNow = document.getElementById('revealNow')
 const cryogenicEl = document.querySelector('.cryogenic')
 let creoCamera = document.getElementById('creoCamera')
 let potionsSlider = document.getElementById('potionsSlider')
-let myBreedingSlider = document.getElementById('myBreedingSlider')
+
+const resultContainer = document.getElementById('genesEditResult')
+const InitiateBreedingButton = document.getElementById('InitiateBreeding')
 
 let breedingState = {
     status: false,
@@ -14,9 +16,7 @@ let breedingState = {
     babyid: null,
     datestart: null
 }
-const babiesOptions = {
-
-}
+const babiesOptions = {}
 //Wallet
 const walletBlock = document.getElementById('WalletBlock')
 
@@ -568,30 +568,59 @@ sliders.cryo.init(document.querySelectorAll('.cryo-swiper'))
 //Genes Initiate
 function initiateBreeding() {
     this.popup = document.getElementById('editGenesPopup')
-    this.button = document.getElementById('InitiateBreeding')
+    this.button = InitiateBreedingButton
     this.errors = false
 }
-initiateBreeding.prototype.start = function() {
+initiateBreeding.prototype.open = function() {
     this.popup.classList.add('show')
 
     if ( !babiesOptions[breedingState.potion] ) {
         babiesOptions[breedingState.potion] = {
-            background: null,
-            body: null,
-            head: null,
-            clothes: null,
-            mouth: null,
-            nose: null,
-            eyes: null
+            background: {
+                code: null,
+                url: null
+            },
+            body: {
+                code: null,
+                url: null
+            },
+            head: {
+                code: null,
+                url: null
+            },
+            clothes: {
+                code: null,
+                url: null
+            },
+            mouth: {
+                code: null,
+                url: null
+            },
+            nose: {
+                code: null,
+                url: null
+            },
+            eyes: {
+                code: null,
+                url: null
+            },
         }
     }
     this.check()
 }
+
 initiateBreeding.prototype.check = function() {
     this.errors = false
     for ( let option in babiesOptions[breedingState.potion] ) {
 
-        if (!babiesOptions[breedingState.potion][option]) this.errors = true
+        const layer = new Image(option)
+
+        if (!babiesOptions[breedingState.potion][option].code) this.errors = true
+        if (!babiesOptions[breedingState.potion][option].url) {
+            layer.removeLayer()
+        } else {
+            layer.addLayer()
+        }
 
         const options = this.popup.querySelectorAll('.options-list__item[data-option="' + option + '"]')
 
@@ -599,7 +628,7 @@ initiateBreeding.prototype.check = function() {
 
             const accordionItem = item.closest('.accordion__item')
 
-            if ( item.dataset['optionItem'] === babiesOptions[breedingState.potion][option] ) {
+            if ( item.dataset['optionItem'] === babiesOptions[breedingState.potion][option].code ) {
 
                 item.classList.add('checked')
                 accordionItem.classList.add('option_checked')
@@ -608,7 +637,7 @@ initiateBreeding.prototype.check = function() {
 
                 item.classList.remove('checked')
 
-                if (!babiesOptions[breedingState.potion][option])
+                if (!babiesOptions[breedingState.potion][option].code)
                     accordionItem.classList.remove('option_checked')
             }
         })
@@ -626,9 +655,13 @@ initiateBreeding.prototype.chose = function(e) {
     const item = e.target.closest('[data-option]')
     const option = item.dataset.option
     const optionValue = item.dataset.optionItem
+    const imgUri = e.target.closest('img').src
 
-    babiesOptions[breedingState.potion][option] = optionValue
+    const image = new Image(option)
 
+    babiesOptions[breedingState.potion][option].code = optionValue
+
+    image.addLayer(imgUri)
     this.check()
 }
 
@@ -638,12 +671,39 @@ initiateBreeding.prototype.close = function() {
 
 const initiate = new initiateBreeding()
 
+//Image
+function Image(option) {
+    this.option = option
+    this.img = resultContainer.querySelector(`.layer_${this.option}`)
+}
+
+Image.prototype.addLayer = function(url) {
+
+    this.url = url || babiesOptions[breedingState.potion][this.option].url
+    this.urlMod = this.url.replace('optionsPreview', 'options')
+
+    babiesOptions[breedingState.potion][this.option].url = this.urlMod
+
+    if ( !this.img ) {
+        this.img = document.createElement('img')
+        this.img.src = this.urlMod
+        this.img.className = `layer layer_${this.option}`
+        resultContainer.append(this.img)
+
+    } else {
+        this.img.src = this.urlMod
+    }
+}
+
+Image.prototype.removeLayer = function() {
+    if ( this.img ) this.img.remove()
+}
 
 //EventListeners
 cryogenicEl.addEventListener('click', function(e) {
     if ( !breedingState.status ) return false
     if ( e.target.closest('#startBreeding') ) breeding.start()
-    if ( e.target.closest('#startInitiate') ) initiate.start()
+    if ( e.target.closest('#startInitiate') ) initiate.open()
 })
 
 potionsSlider.addEventListener('click', function(e) {
@@ -707,9 +767,11 @@ document.addEventListener('click', function(e) {
 
     if ( target.closest('.options-list__item') ) initiate.chose(e)
 
-    if ( target.closest('.popup') && !target.closest('.popup__content') ) {
+    if ( target.closest('.popup') && !target.closest('.popup__content') ) initiate.close()
 
-        initiate.close()
-    }
+})
 
+InitiateBreedingButton.addEventListener('click', function(){
+    initiate.close()
+    breeding.start()
 })
