@@ -14,7 +14,7 @@
   }
 
   &__content {
-    max-height: 85vh;
+    max-height: 80vh;
     padding: 55px 20px 36px;
     background: $white;
     border-radius: $border-radius-bg;
@@ -22,17 +22,25 @@
     overflow-y: auto;
     overflow-scrolling: auto;
 
+    @media (max-width: $md) {
+      max-height: 85vh;
+    }
+
     @media (max-width: $sm) {
       padding: 17px 5px 20px;
     }
 
     &__wrapper {
-      padding-top: 50px;
+      padding-top: 60px;
       margin: auto;
       width: 100%;
       max-width: 1180px;
       max-height: 100%;
       position: relative;
+
+      @media (max-width: $md) {
+        padding-top: 50px;
+      }
 
       @media (max-width: $sm) {
         padding-top: 40px;
