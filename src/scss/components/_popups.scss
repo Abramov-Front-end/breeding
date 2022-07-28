@@ -14,11 +14,8 @@
   }
 
   &__content {
-    margin: auto;
+    max-height: 85vh;
     padding: 55px 20px 36px;
-    width: 100%;
-    max-width: 1180px;
-    max-height: 100%;
     background: $white;
     border-radius: $border-radius-bg;
     box-shadow: 0 6px 6px rgba($black, 0.06);
@@ -27,6 +24,35 @@
 
     @media (max-width: $sm) {
       padding: 17px 5px 20px;
+    }
+
+    &__wrapper {
+      padding-top: 50px;
+      margin: auto;
+      width: 100%;
+      max-width: 1180px;
+      max-height: 100%;
+      position: relative;
+
+      @media (max-width: $sm) {
+        padding-top: 40px;
+      }
+    }
+  }
+  .btn_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media (max-width: $sm) {
+      width: 30px;
+      height: 30px !important;
+      border-radius: $border-radius;
+
+      img {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 }
@@ -93,8 +119,8 @@
         &_head { z-index: 2; }
         &_clothes { z-index: 3; }
         &_mouth { z-index: 4; }
-        &_nose { z-index: 5; }
-        &_eyes { z-index: 6; }
+        &_eyes { z-index: 5; }
+        &_nose { z-index: 6; }
       }
     }
   }

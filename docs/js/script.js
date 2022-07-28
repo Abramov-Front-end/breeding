@@ -769,6 +769,8 @@ document.addEventListener('click', function(e) {
 
     if ( target.closest('.popup') && !target.closest('.popup__content') ) initiate.close()
 
+    if ( target.closest('#editGenesPopupClose') ) initiate.close()
+
 })
 
 InitiateBreedingButton.addEventListener('click', function(){
